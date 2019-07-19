@@ -6,20 +6,20 @@ import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import firebase from '../../../lib/firebase'
 
-const db = firebase.db
-
 function Features() {
 
     const classes = useStyles()
     const [openings , setOpenings ] = useState([])
 
     useEffect(()=>{
-            db.collection('openings').limit(6).get()
-            .then(docRef=>{
-                docRef.docs.map(data=>{
-                    setOpenings(value=>value.concat(data.data()))
+            if(process.browser){
+                firebase.db.collection('openings').limit(6).get()
+                .then(docRef=>{
+                    docRef.docs.map(data=>{
+                        setOpenings(value=>value.concat(data.data()))
+                    })
                 })
-            })
+            }
     },[])
     return (
         <Container maxWidth="md" >
@@ -30,8 +30,8 @@ function Features() {
             <div>
                 <Slider {...settings}>
                     {
-                        openings.map(data=>(
-                            <div>
+                        openings.map((data,index)=>(
+                            <div key={index}>
                                  <Card className={classes.card}>
                                     <CardContent >
                                         <div>
@@ -46,7 +46,7 @@ function Features() {
                                             <Fab 
                                             variant="extended"
                                             size="small"
-                                            aria-lebel="apply"
+                                            aria-label="apply"
                                             className={classes.applyButton}
                                         >
                                             Apply Now
