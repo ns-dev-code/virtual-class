@@ -20,7 +20,7 @@ module.exports = {
       options: {
         name: `Talent Excel`,
         short_name: `Connecting Organisation with talent`,
-        start_url: `/`,
+        start_url: `/?utm_source=launcher`,
         background_color: `#eae9f4`,
         theme_color: `#4ab8b3`,
         display: `standalone`,
