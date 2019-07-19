@@ -4,6 +4,7 @@ import { Typography , Container , Grid } from '@material-ui/core'
 import Animation from '../../animate/animate-aos'
 import signIn from '../../../images/signIn.png'
 import { navigateTo } from 'gatsby'
+import google from '../../../images/google.png'
 
 function GettingStarted(props){
 
@@ -34,7 +35,7 @@ function GettingStarted(props){
                                 <img src={signIn} className={classes.signImage} alt="signIn" />
                                 <div className={classes.signIn} onClick={handleSignInCLick}>
                                     <Typography  align="center" >
-                                          Sign In 
+                                         Sign In 
                                      </Typography>
                                 </div>
                             </Animation>

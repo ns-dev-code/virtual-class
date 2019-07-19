@@ -1,6 +1,6 @@
 import React from "react"
 import { Main } from '../components/shared'
-import { FrontContent , GettingStarted } from '../components'
+import { FrontContent , GettingStarted , Features } from '../components'
 
 function IndexPage(props){
 
@@ -8,6 +8,7 @@ function IndexPage(props){
      <React.Fragment>
           <Main>
               <FrontContent/>
+              <Features/>
               <GettingStarted/>
           </Main>
          
