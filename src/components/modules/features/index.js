@@ -47,8 +47,8 @@ function Features() {
             <div>
                 <Slider {...settings}>
                     {
-                        openings.map((data,index)=>(
-                                 <Card key={index}  >
+                        openings.length > 0 && openings.map((data,index)=>(
+                                 <Card>
                                     <CardContent >
                                             <div className={classes.contentHead}>
                                                 <Typography align="center" variant="h6" className={classes.featuresText}>{data.title}</Typography>

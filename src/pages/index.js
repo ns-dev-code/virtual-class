@@ -7,8 +7,8 @@ function IndexPage(props){
 
    return(
      <React.Fragment>
+         <SEO/>
           <Main>
-              <SEO/>
               <FrontContent/>
               <Features/>
               <GettingStarted/>
