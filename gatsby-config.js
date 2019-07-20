@@ -1,8 +1,13 @@
 module.exports = {
   siteMetadata: {
     title: `Talent Excel`,
-    description: `Connecting Organisation with Client`,
+    titleTemplate: `%s . Talnet Development and Discovery Platform`,
+    description: `Talnet Development and Discovery Platform`,
     author: `Talent Excel`,
+    url:'https://talentexcel.com',
+    image:'/images/talent.png',
+    pathName:'/',
+    article:'Connecting Organisation with Client'
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -30,6 +35,7 @@ module.exports = {
     },
     `gatsby-theme-material-ui`,
     `gatsby-transformer-sharp`, 
-    `gatsby-plugin-sharp`
+    `gatsby-plugin-sharp`,
+    `gatsby-plugin-offline`
   ],
 }

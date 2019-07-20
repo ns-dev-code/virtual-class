@@ -21,6 +21,7 @@ const useStyles = makeStyles(theme=>({
     texthead:{
         fontSize:'4rem',
         color:'#3F3D56',
+        textShadow: '2px 2px 5px #F2F2F2',
         [theme.breakpoints.down('md')]:{
             fontSize:'3rem'
         }  
@@ -30,7 +31,12 @@ const useStyles = makeStyles(theme=>({
         backgroundImage: `url(${newsImage})`,
         [theme.breakpoints.down('md')]:{
             padding:'0rem !important',
-            marginTop:'0.5rem'
+            marginTop:'2.0rem', 
+        },
+        [theme.breakpoints.down('xs')]:{
+            borderBottom: '2px solid #4AB8B3',
+            borderBottomRightRadius: '10rem',
+            boxShadow: '2px 10px #eaf2f1'
         }
     },
     

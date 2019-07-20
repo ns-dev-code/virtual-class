@@ -17,21 +17,19 @@ function FrontContent(props){
                         <div >
                         <Typography variant="h3" align="center" className={classes.texthead}>
                         <SplitPost initialPose="exit" pose="enter" charPoses={charPose}>
-                            Connecting
+                            Talent Development & Discovery Platform
                         </SplitPost>
                     </Typography>
-                    <Animation direction="fade-up-right">
+                    {/* <Animation direction="fade-up-right">
                         <Typography variant="h3" align="center" className={classes.text} >
                             <SplitPost charPoses={textHead}>
-                                Organisation
                             </SplitPost>
                         </Typography>
                         <Typography variant="h3" align="center" className={classes.text}>
                             <SplitPost pose="enter" charPoses={textHead}>
-                                with talent
                             </SplitPost>
                         </Typography>
-                    </Animation>
+                    </Animation> */}
                         
                         <div className={classes.getStarted}>
                            <div className={classes.getStartedContent}>

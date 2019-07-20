@@ -6,13 +6,16 @@ const useStyles = makeStyles(theme=>({
         color:'#2F2E41',
     },
     featuresText:{
-        color:'2F2E41',
+        color:'#2F2E41',
         fontSize:'larger',
         fontWeight:'600'
     },
-   
+    viewDetails:{
+      margin:'1.0rem'
+    },
     jobDescription:{
-        margin:'1.0rem'
+        margin:'1.0rem',
+        cursor:'pointer'
     },
     applyButton:{
         backgroundColor:'#2E827D',
@@ -24,18 +27,25 @@ const useStyles = makeStyles(theme=>({
     div:{
         margin:'auto',
         display:'table'
-    }
+    },
+   slider:{
+     margin:'1.0rem'
+   },
+   contentHead:{
+     height:'3rem'
+   }
 }))
 
 const settings = {
     dots: true,
+    arrows:false,
     infinite: false,
-    speed: 500,
+    speed: 1000,
     slidesToShow: 4,
     slidesToScroll: 4,
     autoplay:true,
     speed: 5000,
-    autoplaySpeed: 5000,
+    autoplaySpeed: 2000,
     initialSlide: 0,
     responsive: [
       {

@@ -11,7 +11,7 @@ function GettingStarted(props){
     const classes= useStyles()
     
     const handleSignInCLick = () =>{
-        navigateTo('/login')
+        // navigateTo('/login')
     }
 
     return(

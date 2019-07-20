@@ -1,19 +1,31 @@
-import React from 'react';
+import React , { useEffect , useState } from 'react';
 import { makeStyles } from '@material-ui/styles'
 import { AppBar , Toolbar , Button } from '@material-ui/core'
-import logo from '../../../../images/talent-excel-logo.png'
 import { useStyles } from './main-header-style'
+import firebase from '../../../../lib/firebase'
 
 function Header(props){
     const classes = useStyles()
-    
+    const [state,setState]  = useState()
+
+    useEffect(()=>{
+        
+        firebase.db.collection('cms').doc('talentexcel_cms').collection('navbar').get()
+        .then(docRef=>{
+            docRef.docs.map(value=>{
+                setState(value.data())
+            })
+        })
+
+    },[])
+    console.log(state)
     return(
         <React.Fragment>
            
                <AppBar position="static" className={classes.appBar}>
                     <Toolbar className={classes.toolbar} >
                         <div>
-                           <img src={logo} className={classes.imageStyle}/>
+                           { state && <img src={state.image} className={classes.imageStyle}/>}
                         </div>
                         <div className={classes.contentContainer}>
                         <Button size="large" className={classes.button}>
