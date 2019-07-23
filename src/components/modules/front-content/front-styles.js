@@ -5,8 +5,8 @@ const useStyles = makeStyles(theme=>({
     contentMargin:{
         margin:'1.0rem',
         [theme.breakpoints.up('xl')]:{
-                margin:'1.0rem',
-                width:'85%'
+                margin:'2rem auto',
+                width:'100%'
         }
     },
     frontImage:{
@@ -29,6 +29,7 @@ const useStyles = makeStyles(theme=>({
     textPadding:{
         padding:'4rem !important',
         backgroundImage: `url(${newsImage})`,
+        backgroundSize:'cover',
         [theme.breakpoints.down('md')]:{
             padding:'0rem !important',
             marginTop:'2.0rem', 

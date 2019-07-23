@@ -9,6 +9,7 @@ export default function JobDetails(props) {
     const classes =  useStyles()
     const { open , details } = props 
 
+      if(open == true){
         return (
             <Dialog open={open} maxWidth="xs" fullWidth>
                 <DialogContent>
@@ -45,4 +46,5 @@ export default function JobDetails(props) {
                 </DialogActions>
             </Dialog>
         )
+      }
 }

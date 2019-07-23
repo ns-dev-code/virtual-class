@@ -7,6 +7,7 @@ import 'slick-carousel/slick/slick-theme.css'
 import firebase from '../../../lib/firebase'
 import {  IoMdLocate , IoIosList , IoIosCalendar , IoIosGlobe} from 'react-icons/io'
 import JobDetails from './job-details'
+import { Link, navigate } from 'gatsby'
 
 function Features() {
 
@@ -27,17 +28,25 @@ function Features() {
     },[])
 
     const handleViewMore = index => () =>{
-          var data = null
-          data = openings[index]
-          setDetails(data)
-          setOpen(true)
+         try{   
+            if(index){
+                var data = null
+                data = openings[index]
+                setDetails(data)
+                setOpen(true)
+            }
+         }catch(error){
+             alert(error)
+         }
     }
 
     const handleClose = () =>{
         setOpen(false)
         setDetails(null)
     }
-
+    const handleApply = applId => () =>{
+        navigate(`/apply-now/${applId.trim()}`)
+    }
     return (
         <Container maxWidth="md" >
             <div style={{margin:'1.0rem'}}>
@@ -76,13 +85,14 @@ function Features() {
                                             </div>
                                         <div className={classes.div}>
                                             <Fab 
-                                            variant="extended"
-                                            size="small"
-                                            aria-label="apply"
-                                            className={classes.applyButton}
-                                        >
-                                            Apply Now
-                                        </Fab>
+                                                variant="extended"
+                                                size="small"
+                                                aria-label="apply"
+                                                className={classes.applyButton}
+                                                onClick={handleApply(data.id)}
+                                            >
+                                                Apply Now
+                                            </Fab>
                                         </div>
                                     </CardContent>
                              </Card>
@@ -92,7 +102,7 @@ function Features() {
                
             </div>
             { 
-                (open == true && viewDetails != null )&& 
+                (open == true && viewDetails != null ) && 
                                 <JobDetails open={open} details={viewDetails}>
                                     <Button onClick={handleClose} color="primary">Cancel</Button>
                                 </JobDetails> 

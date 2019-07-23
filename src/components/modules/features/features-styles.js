@@ -20,9 +20,6 @@ const useStyles = makeStyles(theme=>({
     applyButton:{
         backgroundColor:'#2E827D',
         color:'white',
-        '&:hover':{
-            color:'black'
-        }
     },
     div:{
         margin:'auto',

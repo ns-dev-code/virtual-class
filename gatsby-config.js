@@ -10,6 +10,12 @@ module.exports = {
     article:'Connecting Organisation with Client'
   },
   plugins: [
+    {
+      resolve:`gatsby-plugin-create-client-paths`,
+      options:{
+        prefixes:[`/apply-now/*`]
+      }
+    },
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,
@@ -36,6 +42,7 @@ module.exports = {
     `gatsby-theme-material-ui`,
     `gatsby-transformer-sharp`, 
     `gatsby-plugin-sharp`,
-    `gatsby-plugin-offline`
+    `gatsby-plugin-offline`,
+    
   ],
 }
