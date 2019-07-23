@@ -34,8 +34,13 @@ function GettingStarted(props){
                             <Animation direction="fade-left">
                                 <img src={signIn} className={classes.signImage} alt="signIn" />
                                 <div className={classes.signIn} onClick={handleSignInCLick}>
-                                    <Typography  align="center" >
-                                         Sign In 
+                                    
+                                    <Typography  align="center" 
+                                    onCLick={()=>{
+                                        navigateTo('/login')
+                                    }}
+                                    >
+                                          Sign In 
                                      </Typography>
                                 </div>
                             </Animation>
