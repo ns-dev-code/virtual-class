@@ -1,0 +1,23 @@
+{
+    "navbar":{
+        "Contact Us":"Contact Us",
+        "About Us":"About Us"
+    },
+    "heading":"Talent Development & Discovery Platform",
+    "Get Started":"Get Started",
+    "SignIn":"Sign In",
+    "Loading":"Loading",
+    "features":{
+        "Featured":"Featured Jobs",
+        "Apply Now":"Apply Now"
+    },
+    "getStarted":{
+        "transform":"Transform your business.",
+        "content":""
+    },
+    "apply":{
+        "Apply Here":"Apply Here",
+        "Upload Your CV":"Upload CV",
+        "Send Application":"Send Application"
+    }
+}

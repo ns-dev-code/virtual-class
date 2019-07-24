@@ -1,40 +1,33 @@
-import React from 'react'
+import React , {Suspense} from 'react'
 import { Typography , Grid } from '@material-ui/core'
 import { useStyles , charPose , textHead } from './front-styles'
 import frontImage from '../../../images/main.png'
 import Animation from '../../animate/animate-aos'
 import SplitPost from 'react-pose-text'
+import {  useTranslation } from 'react-i18next'
+
+const Loader = () => <div>Loader ...</div>
 
 function FrontContent(props){
 
     const classes = useStyles()
+    const { t } = useTranslation('translation')
 
     return(
         <React.Fragment>
-           <section className={classes.contentMargin}>
+          <section className={classes.contentMargin}>
               <Grid container spacing={3}>
                 <Grid item xs={12} sm={6} md={6} className={classes.textPadding}>
                         <div >
                         <Typography variant="h3" align="center" className={classes.texthead}>
                         <SplitPost initialPose="exit" pose="enter" charPoses={charPose}>
-                            Talent Development & Discovery Platform
+                           {t('heading')}
                         </SplitPost>
                     </Typography>
-                    {/* <Animation direction="fade-up-right">
-                        <Typography variant="h3" align="center" className={classes.text} >
-                            <SplitPost charPoses={textHead}>
-                            </SplitPost>
-                        </Typography>
-                        <Typography variant="h3" align="center" className={classes.text}>
-                            <SplitPost pose="enter" charPoses={textHead}>
-                            </SplitPost>
-                        </Typography>
-                    </Animation> */}
-                        
                         <div className={classes.getStarted}>
                            <div className={classes.getStartedContent}>
                                 <Typography align="center" >
-                                        Get Started
+                                       {t('Get Started')}
                                 </Typography>
                            </div>
                         </div>
@@ -50,4 +43,4 @@ function FrontContent(props){
         </React.Fragment>
     )
 }
-export default FrontContent
+export default (FrontContent)

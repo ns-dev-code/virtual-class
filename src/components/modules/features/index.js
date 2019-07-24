@@ -90,14 +90,16 @@
 
 import React , { useEffect , useState } from 'react'
 import { useStyles , settings } from './features-styles'
-import { Container , Typography, CardContent , Card , Fab , Divider, Button} from '@material-ui/core'
+import { Container , Typography, CardContent , Card , Fab , Button} from '@material-ui/core'
 import Slider from 'react-slick'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import firebase from '../../../lib/firebase'
-import {  IoMdLocate , IoIosList , IoIosCalendar , IoIosGlobe} from 'react-icons/io'
+import {  IoMdLocate , IoIosList  , IoIosGlobe} from 'react-icons/io'
 import JobDetails from './job-details'
-import { Link, navigate } from 'gatsby'
+import {  navigate } from 'gatsby'
+import { useTranslation } from 'react-i18next'
+import { Markdown } from 'react-showdown'
 
 function Features() {
 
@@ -105,6 +107,7 @@ function Features() {
     const [open,setOpen] = useState(false)
     const [openings,setOpenings ] = useState([])
     const [viewDetails, setDetails] = useState(null)
+    const { t } = useTranslation('translation')
 
     useEffect(()=>{
                 if(process.browser) {
@@ -140,7 +143,7 @@ function Features() {
     return (
         <Container maxWidth="md" >
             <div style={{margin:'1.0rem'}}>
-             <Typography variant="h4" align="center" className={classes.text}>Featured Jobs</Typography>
+             <Typography variant="h4" align="center" className={classes.text}>{t('features.Featured')}</Typography>
 
             </div>
             <div>
@@ -165,7 +168,7 @@ function Features() {
                                                        </tr>
                                                        <tr style={{margin:'1.0rem'}}>
                                                            <td><IoIosList color="#2F2E41" size="15"/></td>
-                                                           <td style={{marginLeft:'1.0rem'}}><Typography align="justify" variant="caption" >{data.description.substr(0,50)}...</Typography>
+                                                           <td style={{marginLeft:'1.0rem'}}><Typography align="justify" variant="caption" >{<Markdown markup={data.description.substr(0,50)}/>}...</Typography>
                                                                     <a onClick={handleViewMore(index)} style={{color:'blue'}}>More</a>
                                                             </td>
                                                        </tr>
@@ -181,7 +184,7 @@ function Features() {
                                                 className={classes.applyButton}
                                                 onClick={handleApply(data.id)}
                                             >
-                                                Apply Now
+                                              {t('features.Apply Now')}
                                             </Fab>
                                         </div>
                                     </CardContent>
