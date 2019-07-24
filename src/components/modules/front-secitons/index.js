@@ -5,11 +5,13 @@ import Animation from '../../animate/animate-aos'
 import signIn from '../../../images/signIn.png'
 import { navigateTo } from 'gatsby'
 import google from '../../../images/google.png'
+import { useTranslation } from 'react-i18next'
 
 function GettingStarted(props){
 
     const classes= useStyles()
-    
+    const { t } = useTranslation('translation')
+
     const handleSignInCLick = () =>{
         // navigateTo('/login')
     }
@@ -21,7 +23,7 @@ function GettingStarted(props){
                        <Grid item xs={12} sm={6} md={6}>
                             <Animation direction="fade-right">
                             <Typography variant="h4" className={classes.text} align="center">
-                                Transform your business.
+                                {t('getStarted.transform')}
                             </Typography><br/>
                             <Typography className={classes. captionText} align="center">
                                 Lorem Ipsum is simply dummy text of the printing and typesetting industry.
@@ -35,7 +37,7 @@ function GettingStarted(props){
                                 <img src={signIn} className={classes.signImage} alt="signIn" />
                                 <div className={classes.signIn} onClick={handleSignInCLick}>
                                     <Typography  align="center" >
-                                         Sign In 
+                                         {t('SignIn')}
                                      </Typography>
                                 </div>
                             </Animation>

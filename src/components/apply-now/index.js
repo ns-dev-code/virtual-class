@@ -6,9 +6,11 @@ import { Markdown } from 'react-showdown'
 import file from '../../images/file.png'
 import $ from 'jquery'
 import { withSnackbar } from 'notistack'
+import { useTranslation } from 'react-i18next'
 
  function ApplyNow(props) {
     const { id } = props 
+    const { t } = useTranslation('translation')
     const classes = useStyles()
     const [state,setState] = useState({
             file:null,
@@ -142,7 +144,7 @@ import { withSnackbar } from 'notistack'
                                 <Grid xs={12} sm={6} md={6}>
                                         <Paper className={classes.root}>
                                                 <div className={classes.content}>
-                                                <Typography variant="h6" align="center" className={classes.textApply}>Apply Here </Typography>
+                                                <Typography variant="h6" align="center" className={classes.textApply}>{t('apply.Apply Here')}</Typography>
                                                         <div className={classes.formWrapper}>
                                                                 <Grid container spacing={2} className={classes.uploadImage}>
                                                                         <Grid item xs={12} sm={6} md={6}>
@@ -204,7 +206,7 @@ import { withSnackbar } from 'notistack'
                                                                                         }}
                                                                                 >
                                                                                   <img src={file} alt="upload" style={{width:'30px'}}/>
-                                                                                  {message}
+                                                                                  {t('apply.Upload Your CV')}
                                                                                 </Fab>
                                                                                 <TextField
                                                                                         id="file"
@@ -226,7 +228,7 @@ import { withSnackbar } from 'notistack'
                                                                                                 color="secondary"
                                                                                                 onClick={handleSubmit}
                                                                                         >
-                                                                                           Send Application
+                                                                                          {t('apply.Send Application')}
                                                                                         </Fab>
                                                                                </Typography>
                                                                         </Grid>
@@ -243,7 +245,7 @@ import { withSnackbar } from 'notistack'
       }else{
               return (
                      <Container maxWidth="lg">
-                              <Typography variant="h6">Loading..</Typography>
+                              <Typography variant="h6">{t('Loading')}..</Typography>
                      </Container>
               )
       }

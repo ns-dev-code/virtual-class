@@ -1,7 +1,8 @@
-/**
- * Implement Gatsby's Node APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/node-apis/
- */
+const fs = require('fs-extra')
+const path = require("path")
 
-// You can delete this file if you're not using it
+exports.onPostBuild = () =>{
+    console.log('Copying Locales')
+    fs.copySync(__dirname,'/src/locales')
+    fs.copySync(__dirname,'/public/locales')
+}

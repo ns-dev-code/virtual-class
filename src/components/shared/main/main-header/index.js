@@ -3,10 +3,12 @@ import { AppBar , Toolbar , Button } from '@material-ui/core'
 import { useStyles } from './main-header-style'
 import talent from '../../../../images/talent-excel-logo.png'
 import { navigate } from 'gatsby'
+import { useTranslation } from 'react-i18next'
+import LanguageSwitcher from '../../../lang-switch'
 
 function Header(props){
     const classes = useStyles()
-
+    const { t } = useTranslation("translation")
     const handleClick = () =>{
         navigate('/')
     }
@@ -19,12 +21,16 @@ function Header(props){
                          <img src={talent} className={classes.imageStyle}/>
                         </div>
                         <div className={classes.contentContainer}>
+                        <LanguageSwitcher/>
                         <Button size="large" className={classes.button}>
-                           <span >About Us</span>
+                           <span >{t('navbar.About Us')}</span>
                         </Button>
                         <Button size="large" className={classes.button}>
-                           <span >Contact Us</span>
+                           <span >{t('navbar.Contact Us')}</span>
                         </Button>
+                        </div>
+                        <div className={classes.sectionMobile}>
+                         <LanguageSwitcher/>
                         </div>
                     </Toolbar>
                </AppBar>

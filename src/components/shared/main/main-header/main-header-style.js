@@ -10,10 +10,10 @@ const useStyles = makeStyles(theme=>({
             width:'auto'
         }
     },
-    sectionDesktop:{
-        display: 'none',
-        [theme.breakpoints.up('md')]: {
+    sectionMobile:{
         display: 'flex',
+        [theme.breakpoints.up('md')]: {
+        display: 'none',
         },
     },
     appBar:{
