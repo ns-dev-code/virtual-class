@@ -16,3 +16,4 @@
 //     </Provider>
 //   )
 // }
+import './src/styles/style.css'

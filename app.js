@@ -2,8 +2,17 @@ const express = require('express')
 
 const app = express()
 
-app.use(express.static(__dirname+'/public'))
+app.use(express.static('public'))
 
-app.listen(5000, ()=>{
-    console.log(`App Listening to port 5000`)
+
+app.get('/',(req, res) => {
+    res.sendFile(`${__dirname}/public/`)
+})
+
+
+app.get('/apply-now/:id',(req, res) => {
+    res.sendFile(`${__dirname}/public/apply-now/`)
+})
+app.listen(8080, ()=>{
+    console.log(`App Listening to port 8080`)
 })
