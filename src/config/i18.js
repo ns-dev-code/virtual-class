@@ -7,8 +7,8 @@ const i18n = require('i18next').default;
 const Backend = require('i18next-xhr-backend');
 const LanguageDetector = require('i18next-browser-languagedetector');
 const initReactI18next = require('react-i18next').initReactI18next;
-const translationEN = require('../../public/locales/en/page-header.json');
-const translationRU = require('../../public/locales/ru/page-header.json');
+const translationEN = require('../locales/en/page-header.json');
+const translationRU = require('../locales/ru/page-header.json');
 
 const availableLanguages= ['en','ru']
 const resources = {
