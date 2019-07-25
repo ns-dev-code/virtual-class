@@ -9,15 +9,27 @@ const useStyles = makeStyles(theme=>({
             paddingTop: theme.spacing(6),
             paddingBottom: theme.spacing(6),
           },
+        [theme.breakpoints.up('xl')]:{
+                  width:'80%',
+        },
+        '@media (max-width: 960px)':{
+            maxWidth:"960px"
+        }
     },
     text:{
         color:'#2F2E41',
         lineHeight:'2.0rem'
     },
     captionText:{
-        fontWeight:'larger',
+        // fontWeight:'larger',
         color:'#2F2E41',
-        lineHeight:'2.0rem'
+        lineHeight:'2.0rem',
+        [theme.breakpoints.up('md')]:{
+            fontSize:"x-large",
+        },  
+        [theme.breakpoints.down('sm')]:{
+            fontSize:'1rem !important'
+          }
     },
     signIn:{
         backgroundColor: '#2E827D',

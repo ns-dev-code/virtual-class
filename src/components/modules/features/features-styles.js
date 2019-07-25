@@ -30,6 +30,16 @@ const useStyles = makeStyles(theme=>({
    },
    contentHead:{
      height:'3rem'
+   },
+   container:{
+       [theme.breakpoints.up('xl')]:{
+         width:'80% !important',
+       },
+      
+   },
+   contentext:{
+    fontSize:'x-large',
+    
    }
 }))
 

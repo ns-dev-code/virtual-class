@@ -6,8 +6,9 @@ const useStyles = makeStyles(theme=>({
         margin:'1.0rem',
         [theme.breakpoints.up('xl')]:{
                 margin:'2rem auto',
-                width:'100%'
-        }
+                width:'80%'
+        },
+        
     },
     frontImage:{
         width:'100%',

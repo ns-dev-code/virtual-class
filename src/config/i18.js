@@ -9,14 +9,18 @@ const LanguageDetector = require('i18next-browser-languagedetector');
 const initReactI18next = require('react-i18next').initReactI18next;
 const translationEN = require('../locales/en/page-header.json');
 const translationRU = require('../locales/ru/page-header.json');
+const translationHindi = require('../locales/hindi/page-header.json')
 
-const availableLanguages= ['en','ru']
+const availableLanguages= ['en','ru','hindi']
 const resources = {
     en:{
         translation:translationEN
     },
     ru:{
         translation:translationRU
+    },
+    hindi:{
+        translation:translationHindi
     }
 }
 

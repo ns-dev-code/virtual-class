@@ -1,0 +1,24 @@
+{
+    "title":"टैलेंट एक्सेल",
+    "navbar":{
+        "Contact Us":"हमसे संपर्क करें",
+        "About Us":"हमारे बारे में"
+    },
+    "heading":"प्रतिभा विकास और खोज मंच",
+    "Get Started":"शुरू हो जाओ",
+    "SignIn":"दाखिल करना",
+    "Loading":"लोड हो रहा है",
+    "features":{
+        "Featured":"चुनिंदा नौकरियां",
+        "Apply Now":"अभी अप्लाई करें"
+    },
+    "getStarted":{
+        "transform":"अपना व्यवसाय बदलना।",
+        "content":""
+    },
+    "apply":{
+        "Apply Here":"यहां आवेदन करें",
+        "Upload Your CV":"बायोडाटा अपलोड करो",
+        "Send Application":"आवेदन भेजें"
+    }
+}

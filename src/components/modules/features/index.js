@@ -141,7 +141,7 @@ function Features() {
         navigate(`/apply-now/${applId.trim()}`)
     }
     return (
-        <Container maxWidth="md" >
+        <Container  className={classes.container} >
             <div style={{margin:'1.0rem'}}>
              <Typography variant="h4" align="center" className={classes.text}>{t('features.Featured')}</Typography>
 
@@ -160,7 +160,7 @@ function Features() {
                                                     <tbody>
                                                        <tr style={{margin:'1.0rem'}}>
                                                            <td><IoIosGlobe color="#2F2E41" size="15"/></td>
-                                                           <td><Typography align="inherit" style={{marginLeft:'1.0rem'}}>{data.company}</Typography></td>
+                                                           <td><Typography align="inherit" className={classes.contentext} style={{marginLeft:'1.0rem'}}>{data.company}</Typography></td>
                                                        </tr>
                                                        <tr style={{margin:'1.0rem'}}>
                                                            <td><IoMdLocate color="#2F2E41" size="15"/></td>

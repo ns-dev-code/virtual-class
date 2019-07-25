@@ -1,6 +1,6 @@
 import React ,{ Component } from 'react'
 import { withTranslation } from 'react-i18next'
-import { NativeSelect } from '@material-ui/core';
+import { NativeSelect, Button } from '@material-ui/core';
 import India from '../../images/flags/india.png'
 import Russia from '../../images/flags/russia.png'
 
@@ -27,18 +27,22 @@ class LanguageSwitcher extends Component{
 
     render(){
         const languages =[
-            {code:'en',label:'EN',flag:India},
-            {code:'ru',label:'RU',flag:Russia}
+            {code:'en',label:'English',flag:India},
+            {code:'ru',label:'Russia (Россия)',flag:Russia},
+            {code:'hindi',label:'Hindi (हिंदी)',flag:India}
         ]
         return(
             <div className="LanguageSwitcher">
+                
                 <NativeSelect
                     value={this.state.language}
                     onChange={this.handleLanguageChange}
+                    fullWidth
+                    type="button"
+                    style={{width:'-webkit-fill-available'}}
                 >
                                         
                     {languages.map(language=>(
-                      
                           <option value={language.code}>{language.label}</option>
                     ))}
                 </NativeSelect>

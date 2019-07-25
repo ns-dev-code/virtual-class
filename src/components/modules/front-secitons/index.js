@@ -18,10 +18,10 @@ function GettingStarted(props){
 
     return(
         <React.Fragment>
-                <Container maxWidth="md" component="div" className={classes.content}>
-                    <Grid container spacing={3} >
+                <Container  className={classes.content}>
+                    <Grid container spacing={2} >
                        <Grid item xs={12} sm={6} md={6}>
-                            <Animation direction="fade-right">
+                            <Animation direction="fade-in">
                             <Typography variant="h4" className={classes.text} align="center">
                                 {t('getStarted.transform')}
                             </Typography><br/>
@@ -33,7 +33,7 @@ function GettingStarted(props){
                             </Animation>
                        </Grid>
                        <Grid item xs={12} sm={6} md={6} style={{margin:'auto'}}>
-                            <Animation direction="fade-left">
+                            <Animation direction="fade-in">
                                 <img src={signIn} className={classes.signImage} alt="signIn" />
                                 <div className={classes.signIn} onClick={handleSignInCLick}>
                                     <Typography  align="center" >
