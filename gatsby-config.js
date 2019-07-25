@@ -4,10 +4,7 @@ module.exports = {
     titleTemplate: `%s . Talnet Development and Discovery Platform`,
     description: `Talnet Development and Discovery Platform`,
     author: `Talent Excel`,
-    url:'https://talentexcel.com',
-    image:'/images/talent.png',
-    pathName:'/',
-    article:'Connecting Organisation with Client'
+    siteUrl: 'https://www.talentexcel.com'
   },
   plugins: [
     {
@@ -30,7 +27,7 @@ module.exports = {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: `Talent Excel`,
-        short_name: `Connecting Organisation with talent`,
+        short_name: `Talent Excel`,
         start_url: `/?utm_source=launcher`,
         background_color: `#eae9f4`,
         theme_color: `#4ab8b3`,
@@ -39,10 +36,26 @@ module.exports = {
         scope: "/",
       },
     },
+    `gatsby-plugin-offline`,
     `gatsby-theme-material-ui`,
     `gatsby-transformer-sharp`, 
     `gatsby-plugin-sharp`,
     `gatsby-plugin-offline`,
-    
+    {
+      resolve: `gatsby-plugin-react-redux`,
+      options: {
+        // [required] - path to your createStore module
+        pathToCreateStoreModule: './src/lib/redux/stores',
+        // [optional] - options passed to `serialize-javascript`
+        // info: https://github.com/yahoo/serialize-javascript#options
+        // will be merged with these defaults:
+        serialize: {
+          space: 0,
+          isJSON: true,
+          unsafe: false,
+        },
+      },
+    },
   ],
+  
 }

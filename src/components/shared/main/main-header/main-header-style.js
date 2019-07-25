@@ -46,6 +46,9 @@ const useStyles = makeStyles(theme=>({
         '&:hover':{
             borderBottom:'3px solid #4AB8B3'
         }
+    },
+    body : {
+        padding: '0'
     }
 }))
 

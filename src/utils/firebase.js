@@ -11,7 +11,7 @@ if(typeof window !== "undefined"){
 
 
 const { Component } =  require("react");
-const { firebaseConfig } = require("../config");
+const { firebaseConfig } = require("./config");
 
 class Firebase extends Component {
   constructor(props) {
@@ -65,9 +65,10 @@ class Firebase extends Component {
 }
  fb = new Firebase();
 //export default new Firebase();
+
 }
 
-export  default fb;
+export default fb;
 
 
 // const firebase = require("firebase");
@@ -77,7 +78,7 @@ export  default fb;
 
 
 // const { Component } =  require("react");
-// const { firebaseConfig } = require("../config");
+// const { firebaseConfig } = require("./config");
 
 // class Firebase extends Component {
 // constructor(props) {
