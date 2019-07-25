@@ -5,6 +5,7 @@ import frontImage from '../../../images/main.png'
 import Animation from '../../animate/animate-aos'
 import SplitPost from 'react-pose-text'
 import {  useTranslation } from 'react-i18next'
+import i18next from 'i18next';
 
 const Loader = () => <div>Loader ...</div>
 
@@ -34,7 +35,7 @@ function FrontContent(props){
                     </div>
                 </Grid>
                 <Grid item xs={12} sm={6} md={6} className={classes.contentImage} >
-                    <Animation direction="fade-up-left">
+                    <Animation direction="fade-up">
                         <img src={frontImage} alt="frontImage" className={classes.frontImage} />
                     </Animation>
                 </Grid>
