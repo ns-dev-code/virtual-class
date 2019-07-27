@@ -27,6 +27,11 @@ const useStyles = makeStyles(theme=>({
         backgroundImage: `url(${upload})`,
         backgroundSize:'cover',
     },
+    jobDescription:{
+        [theme.breakpoints.down('sm')]:{
+            display:'none'
+        }
+    }
 }))
 
 export { useStyles }

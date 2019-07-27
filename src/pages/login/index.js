@@ -3,21 +3,16 @@ import { navigateTo, Link } from 'gatsby'
 import { Button, Input, TextField, Paper } from '@material-ui/core'
 import firebase from '../../utils/firebase'
 import {connect}  from 'react-redux'
-
+import { makeStyles } from '@material-ui/styles'
 import { login } from '../../lib/redux/actions'
 const Login = (props) => {
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const classes = useStyles()
     return (
         <div>
-            <Paper
-                style={{
-                    width: "400px",
-                    margin: '0 auto',
-                    padding: '20px'
-                }}
-            >
+            <Paper className={classes.root}>
                 <h3 >Login Here</h3>
                 <TextField
                     name="email"
@@ -74,5 +69,13 @@ const Login = (props) => {
         </div>
     )
 }
+
+const useStyles = makeStyles(theme=>({
+    root:{
+         width: "400px",
+         margin: '0 auto',
+         padding: '20px'
+    }
+}))
 
 export default connect(null, {login})(Login)

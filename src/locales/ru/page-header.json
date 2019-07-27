@@ -1,21 +1,17 @@
 {
     "title":"одаренность превосходить",
-    "navbar":{
-        "Contact Us":"Связаться с нами",
-        "About Us":"Насчет нас"
-    },
-    "heading":"Платформа развития и развития талантов",
+    "Contact Us":"Связаться с нами",
+    "About Us":"Насчет нас",
+    "Talent Development & Discovery Platform":"Платформа развития и развития талантов",
     "Get Started":"Начать",
     "SignIn":"Войти в систему",
     "Loading":"загрузка",
-    "features":{
-        "Featured":"Рекомендуемые вакансии",
-        "Apply Now":"Применять"
-    },
-    "getStarted":{
-        "transform":"Преобразуйте свой бизнес.",
-        "content":""
-    },
+    "Featured Jobs":"Рекомендуемые вакансии",
+    "Apply Now":"Применять"
+   ,
+    "Transform Your Business":"Преобразуйте свой бизнес.",
+    "content":""
+    ,
     "apply":{
         "Apply Here":"Подать заявку здесь",
         "Upload Your CV":"Загрузить резюме",

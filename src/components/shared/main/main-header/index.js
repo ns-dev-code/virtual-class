@@ -23,10 +23,10 @@ function Header(props){
                         <div className={classes.contentContainer}>
                         <LanguageSwitcher/>
                         <Button size="large" className={classes.button}>
-                           <span >{t('navbar.About Us')}</span>
+                           <span >{t('Contact Us')}</span>
                         </Button>
                         <Button size="large" className={classes.button}>
-                           <span >{t('navbar.Contact Us')}</span>
+                           <span >{t('About Us')}</span>
                         </Button>
                         </div>
                         <div className={classes.sectionMobile}>

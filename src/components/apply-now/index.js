@@ -1,5 +1,5 @@
 import React , { useState , useEffect } from 'react'
-import { Typography , Container , Grid , Paper, TextField , Fab, Button } from '@material-ui/core'
+import { Typography , Container , Grid , Paper, TextField , Fab } from '@material-ui/core'
 import { useStyles } from './apply-styles'
 import firebase from '../../lib/firebase'
 import { Markdown } from 'react-showdown'
@@ -7,11 +7,13 @@ import file from '../../images/file.png'
 import $ from 'jquery'
 import { withSnackbar } from 'notistack'
 import { useTranslation } from 'react-i18next'
+import Progress from '../../lib/loading'
 
  function ApplyNow(props) {
     const { id } = props 
     const { t } = useTranslation('translation')
     const classes = useStyles()
+    const [loading,setLoading] = useState(false)
     const [state,setState] = useState({
             file:null,
             type:null
@@ -30,6 +32,9 @@ import { useTranslation } from 'react-i18next'
                     firebase.db.collection('openings').doc(id).get()
                     .then(docRef=>{
                        setOpenings(docRef.data())
+                    })
+                    .catch(error=>{
+                       props.enqueueSnackbar(error.message,{variant:'error'})
                     })
             }
     },[])
@@ -90,7 +95,7 @@ import { useTranslation } from 'react-i18next'
                        props.enqueueSnackbar('All Fields are required',{variant:'warning'})
                 }
                 else{
-                       
+                        setLoading(true)
                         firebase.db.collection('applications').add(data)
                         .then(async(docRef)=>{
                                 const res = await firebase.storage.ref(`/applications/${Date.now()}_${email}`).put(state.file)
@@ -118,6 +123,7 @@ import { useTranslation } from 'react-i18next'
             }
     }
         const handleReset = () =>{
+                setLoading(false)
                 setState({
                         file:null,
                         type:null
@@ -133,7 +139,7 @@ import { useTranslation } from 'react-i18next'
                 <React.Fragment>
                         <Container maxWidth="lg">
                             <Grid container spacing={2}>
-                                <Grid item xs={12} sm={6} md={6}>
+                                <Grid item xs={12} sm={6} md={6} className={classes.jobDescription}>
                                 <Paper className={classes.root}>
                                         <div className={classes.content}>
                                                 <Typography variant="h4" className={classes.text}>{openings.company}</Typography>
@@ -147,7 +153,7 @@ import { useTranslation } from 'react-i18next'
                                                 <Typography variant="h6" align="center" className={classes.textApply}>{t('apply.Apply Here')}</Typography>
                                                         <div className={classes.formWrapper}>
                                                                 <Grid container spacing={2} className={classes.uploadImage}>
-                                                                        <Grid item xs={12} sm={6} md={6}>
+                                                                <Grid item xs={12} sm={6} md={6}>
                                                                                 <TextField
                                                                                         id="firstName"
                                                                                         label="Firstname"
@@ -227,8 +233,10 @@ import { useTranslation } from 'react-i18next'
                                                                                                 variant="extended"
                                                                                                 color="secondary"
                                                                                                 onClick={handleSubmit}
+                                                                                                disabled={loading}
                                                                                         >
                                                                                           {t('apply.Send Application')}
+                                                                                          {loading == true && <Progress loading="true"/>}
                                                                                         </Fab>
                                                                                </Typography>
                                                                         </Grid>

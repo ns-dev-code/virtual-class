@@ -20,6 +20,10 @@ const useStyles = makeStyles(theme=>({
     applyButton:{
         backgroundColor:'#2E827D',
         color:'white',
+        '&hover':{
+          backgroundColor:'#2E827D',
+          color:'white'
+        }
     },
     div:{
         margin:'auto',
@@ -44,14 +48,14 @@ const useStyles = makeStyles(theme=>({
 }))
 
 const settings = {
-    dots: true,
+    dots: false,
     arrows:false,
-    infinite: false,
+    infinite: true,
     speed: 1000,
     slidesToShow: 4,
     slidesToScroll: 4,
     autoplay:true,
-    speed: 5000,
+    speed: 2000,
     autoplaySpeed: 2000,
     initialSlide: 0,
     responsive: [

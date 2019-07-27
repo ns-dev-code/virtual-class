@@ -13,6 +13,7 @@
     "crypto-js": "^3.1.9-1",
     "express": "^4.17.1",
     "firebase": "^6.3.1",
+    "formik": "^1.5.8",
     "fs-extra": "^8.1.0",
     "gatsby": "^2.13.21",
     "gatsby-image": "^2.2.6",
@@ -49,7 +50,8 @@
     "redux": "^4.0.4",
     "redux-persist": "^5.10.0",
     "scrollmonitor-react": "^2.4.1",
-    "slick-carousel": "^1.8.1"
+    "slick-carousel": "^1.8.1",
+    "yup": "^0.27.0"
   },
   "devDependencies": {
     "prettier": "^1.18.2"
@@ -68,7 +70,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
+    "url": "https://gitlab.com/orgzapp/gatsby-talentexcel.git"
   },
   "bugs": {
     "url": "https://github.com/gatsbyjs/gatsby/issues"

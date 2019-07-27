@@ -1,8 +1,7 @@
 const API_KEY = process.env.FIREBASE_API_KEY;
 
 const secrets = () => {
-  console.log(process.env.NODE_ENV);
-  if (process.env.NODE_ENV != "production") {
+  if (process.env.NODE_ENV !== "production") {
     const firebaseConfig = {
       apiKey: "AIzaSyAqRfBoxxaBhSwQgunBSrNoACD5RkN6R44",
       authDomain: "talentexcel-1.firebaseapp.com",

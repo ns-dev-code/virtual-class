@@ -117,12 +117,15 @@ function Features() {
                             setOpenings(value=>value.concat(data.data()))
                         })
                     })
+                    .catch(error=>{
+                        alert(error.message)
+                    })
                 }
             },[])
 
     const handleViewMore = index => () =>{
          try{   
-            if(index){
+            if(index >= 0){
                 var data = null
                 data = openings[index]
                 setDetails(data)
@@ -143,7 +146,7 @@ function Features() {
     return (
         <Container  className={classes.container} >
             <div style={{margin:'1.0rem'}}>
-             <Typography variant="h4" align="center" className={classes.text}>{t('features.Featured')}</Typography>
+             <Typography variant="h4" align="center" className={classes.text}>{t('Featured Jobs')}</Typography>
 
             </div>
             <div>
@@ -181,10 +184,11 @@ function Features() {
                                                 variant="extended"
                                                 size="small"
                                                 aria-label="apply"
-                                                className={classes.applyButton}
                                                 onClick={handleApply(data.id)}
+                                                color="secondary"
+                                                key="apply Now"
                                             >
-                                              {t('features.Apply Now')}
+                                              {t('Apply Now')}
                                             </Fab>
                                         </div>
                                     </CardContent>
@@ -195,7 +199,7 @@ function Features() {
                
             </div>
             { 
-                (open == true && viewDetails != null ) && 
+                (open == true && viewDetails) && 
                                 <JobDetails open={open} details={viewDetails}>
                                     <Button onClick={handleClose} color="primary">Cancel</Button>
                                 </JobDetails> 

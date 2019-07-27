@@ -4,7 +4,7 @@ let _i18n;
 if(typeof window !==  'undefined'){
 
 const i18n = require('i18next').default;
-const Backend = require('i18next-xhr-backend');
+// const Backend = require('i18next-xhr-backend');
 const LanguageDetector = require('i18next-browser-languagedetector');
 const initReactI18next = require('react-i18next').initReactI18next;
 const translationEN = require('../locales/en/page-header.json');
@@ -27,7 +27,6 @@ const resources = {
 _i18n = i18n;
 i18n
 .use(initReactI18next)
-.use(Backend)
 .use(LanguageDetector)
 .init({
     resources,

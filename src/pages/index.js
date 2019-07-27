@@ -1,4 +1,4 @@
-import React ,{ Suspense }  from "react"
+import React   from "react"
 import { Main } from '../components/shared'
 import { FrontContent , GettingStarted , Features } from '../components'
 import SEO from '../components/site-meta-data'
@@ -9,13 +9,11 @@ function IndexPage(props){
    return(
          <React.Fragment>
             <SEO/>
-            <Suspense fallback={Loading}>
                <Main>
                   <FrontContent/>
                   <Features/>
                   <GettingStarted/>
                </Main>   
-            </Suspense>
          </React.Fragment>
    )
 }

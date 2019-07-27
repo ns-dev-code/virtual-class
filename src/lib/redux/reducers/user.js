@@ -3,7 +3,6 @@ import { loadState } from '../stores/localstorage';
 
 const initialState = loadState();
 const user = (state = initialState, action) => {
-    console.log(action)
     switch(action.type){
         case USER_LOGIN:
             return {

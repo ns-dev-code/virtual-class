@@ -4,12 +4,10 @@ import firebase from '../../lib/firebase'
 import { Paper, Card } from '@material-ui/core';
 import Dash from '../../components/modules/dashboard'
 const Application = (props) => {
-    console.log(">>>>>: Application -> props", props)
     const [applications, setapplications] = useState([])
     useEffect(() => {
         (async () => {
             const { docs } = await firebase.db.collection('applications').get()
-            console.log(">>>>>: Application -> docs", docs)
 
             setapplications(docs.map(doc => doc.data()))
         })()

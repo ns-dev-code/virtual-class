@@ -3,7 +3,7 @@ import { useStyles } from './section-style'
 import { Typography , Container , Grid } from '@material-ui/core'
 import Animation from '../../animate/animate-aos'
 import signIn from '../../../images/signIn.png'
-import { navigateTo } from 'gatsby'
+import { navigate } from 'gatsby'
 import google from '../../../images/google.png'
 import { useTranslation } from 'react-i18next'
 
@@ -13,7 +13,7 @@ function GettingStarted(props){
     const { t } = useTranslation('translation')
 
     const handleSignInCLick = () =>{
-        // navigateTo('/login')
+        navigate('/login')
     }
 
     return(
@@ -23,7 +23,7 @@ function GettingStarted(props){
                        <Grid item xs={12} sm={6} md={6}>
                             <Animation direction="fade-in">
                             <Typography variant="h4" className={classes.text} align="center">
-                                {t('getStarted.transform')}
+                                {t('Transform Your Business')}
                             </Typography><br/>
                             <Typography className={classes. captionText} align="center">
                                 Lorem Ipsum is simply dummy text of the printing and typesetting industry.
