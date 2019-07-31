@@ -100,6 +100,9 @@ import JobDetails from './job-details'
 import {  navigate } from 'gatsby'
 import { useTranslation } from 'react-i18next'
 import { Markdown } from 'react-showdown'
+import 'slick-carousel/slick/slick.css'
+import 'slick-carousel/slick/slick-theme.css'
+import * as _ from 'lodash'
 
 function Features() {
 
@@ -111,7 +114,7 @@ function Features() {
 
     useEffect(()=>{
                 if(process.browser) {
-                    firebase.db.collection('openings').limit(6).get()
+                    firebase.db.collection('openings').get()
                     .then(docRef=>{
                         docRef.docs.map(data=>{
                             setOpenings(value=>value.concat(data.data()))
@@ -122,7 +125,7 @@ function Features() {
                     })
                 }
             },[])
-
+            console.log(openings)
     const handleViewMore = index => () =>{
          try{   
             if(index >= 0){
@@ -153,8 +156,8 @@ function Features() {
                 <Slider {...settings}>
                     {
                         openings.length > 0 && openings.map((data,index)=>(
-                                 <Card>
-                                    <CardContent >
+                                 <Card >
+                                    <CardContent  >
                                             <div className={classes.contentHead}>
                                                 <Typography align="center" variant="h6" className={classes.featuresText}>{data.title}</Typography>
                                             </div>
@@ -163,7 +166,7 @@ function Features() {
                                                     <tbody>
                                                        <tr style={{margin:'1.0rem'}}>
                                                            <td><IoIosGlobe color="#2F2E41" size="15"/></td>
-                                                           <td><Typography align="inherit" className={classes.contentext} style={{marginLeft:'1.0rem'}}>{data.company}</Typography></td>
+                                                           <td><Typography align="inherit" className={classes.contentext} style={{marginLeft:'1.0rem'}}>{data.company?_.capitalize(data.company):`Talent Excel`}</Typography></td>
                                                        </tr>
                                                        <tr style={{margin:'1.0rem'}}>
                                                            <td><IoMdLocate color="#2F2E41" size="15"/></td>

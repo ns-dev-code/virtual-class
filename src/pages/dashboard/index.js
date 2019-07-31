@@ -4,21 +4,18 @@ import { Button } from '@material-ui/core'
 import { navigateTo, Link } from 'gatsby';
 import Auth from '../../components/auth'
 import Dash from '../../components/modules/dashboard/'
+import SEO from '../../components/site-meta-data'
+import Overview from '../../components/modules/dashboard/overview'
+
 const Dashboard = () => {
     const [user, setUser] = useState('');
 
-    useEffect(() => {
-        const currentUsr = firebase.auth.currentUser;
-        if (currentUsr !== null)
-            setUser(currentUsr)
-
-    }, [user])
-
     return (
         <Auth>
+            <SEO/>
             <React.Fragment>
                 {
-                    user && <Dash user/>
+                   <Overview />
                    /* { user && (
                         <React.Fragment>
                             <h2>

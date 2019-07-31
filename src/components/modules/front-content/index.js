@@ -5,6 +5,7 @@ import frontImage from '../../../images/main.png'
 import Animation from '../../animate/animate-aos'
 import SplitPost from 'react-pose-text'
 import {  useTranslation } from 'react-i18next'
+import { navigate } from 'gatsby'
 
 const Loader = () => <div>Loader ...</div>
 
@@ -12,7 +13,9 @@ function FrontContent(props){
 
     const classes = useStyles()
     const { t } = useTranslation('translation')
-    
+    const handleClick = () =>{
+        navigate('/login')
+    }
     if(t){
         return(
             <React.Fragment>
@@ -25,7 +28,7 @@ function FrontContent(props){
                                     {t('Talent Development & Discovery Platform')}
                                     </SplitPost>
                                   </Typography>
-                            <div className={classes.getStarted}>
+                            <div className={classes.getStarted} onClick={handleClick}>
                                <div className={classes.getStartedContent}>
                                     <Typography align="center" >
                                            {t('Get Started')}

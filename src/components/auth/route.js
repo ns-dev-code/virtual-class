@@ -15,14 +15,11 @@ import firebase from '../../lib/firebase'
 
 const routes = [
     {
-        icon: <Dashboard />,
-        text: 'Dashboard'
-    }, {
         icon: <Notes />,
-        text: 'Openings'
+        text: 'Openings',
     }, {
         icon: <SettingsApplications />,
-        text: 'Applications'
+        text: 'Applications',
     }
 ]
 export { routes }

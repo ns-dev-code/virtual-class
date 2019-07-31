@@ -6,7 +6,7 @@ const useStyles = makeStyles(theme=>({
         margin:'1.0rem',
         [theme.breakpoints.up('xl')]:{
                 margin:'2rem auto',
-                width:'80%'
+                width:'55%'
         },
         
     },

@@ -8,6 +8,11 @@ const useStyles = makeStyles(theme=>({
         margin:'auto',
         [theme.breakpoints.down('sm')]:{
             width:'auto'
+        },
+        [theme.breakpoints.up('xl')]:{
+            width:'55%',
+            margin:'auto',
+            position:'relative'
         }
     },
     sectionMobile:{
@@ -36,7 +41,8 @@ const useStyles = makeStyles(theme=>({
         },
         [theme.breakpoints.down('xs')]:{
             display:'none'
-        }
+        },
+      
     },
     text:{
         color:'#4AB8B3'

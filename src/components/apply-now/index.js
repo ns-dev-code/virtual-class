@@ -48,8 +48,8 @@ import Progress from '../../lib/loading'
     const onFileLoad = async(event) =>{
         let file = event.target.files[0]
         let reader = new FileReader()
+        console.log(reader)
         let fileType = null
-
         if(file &&(file.type !== 'application/pdf' || file.type === 'application/msword')){
                 return props.enqueueSnackbar('File format not supported',{variant:'error'})
         }
@@ -84,6 +84,7 @@ import Progress from '../../lib/loading'
                }
                setMessage('Uploaded')
         }
+
         reader.readAsDataURL(file)
         }
     }

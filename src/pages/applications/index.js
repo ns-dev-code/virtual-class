@@ -12,7 +12,7 @@ const Application = (props) => {
             setapplications(docs.map(doc => doc.data()))
         })()
     }, [applications.length])
-
+    
     return (
         <Paper>
             <Dash>

@@ -15,7 +15,8 @@ const useStyles = makeStyles(theme=>({
     },
     jobDescription:{
         margin:'1.0rem',
-        cursor:'pointer'
+        cursor:'pointer',
+        height:'9rem'
     },
     applyButton:{
         backgroundColor:'#2E827D',
@@ -44,18 +45,21 @@ const useStyles = makeStyles(theme=>({
    contentext:{
     fontSize:'x-large',
     
+   },
+   card:{
+     margin:'10px !important',
+     position:'relative'
    }
 }))
 
 const settings = {
     dots: false,
-    arrows:false,
+    arrows:true,
     infinite: true,
-    speed: 1000,
+    speed: 500,
     slidesToShow: 4,
     slidesToScroll: 4,
-    autoplay:true,
-    speed: 2000,
+    autoplay:false,
     autoplaySpeed: 2000,
     initialSlide: 0,
     responsive: [

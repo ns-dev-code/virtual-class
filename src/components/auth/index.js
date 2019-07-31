@@ -1,14 +1,17 @@
 import React, { useState, useEffect } from 'react'
 import firebase from '../../utils/firebase'
 import { navigate } from 'gatsby';
+
 export default function auth(props) {
     const [user, setUser] = useState(null)
     useEffect(()=>{
             const currentUser = firebase.auth.currentUser;
-            if(currentUser==null)
+            const user = JSON.parse(window.localStorage.getItem("user"))
+            console.log(user)
+            if(!user)
                navigate('/login')
             else    
-                setUser(currentUser)
+                setUser(user)
     },[])
     return (
        <React.Fragment>
