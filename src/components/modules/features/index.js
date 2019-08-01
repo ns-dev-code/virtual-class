@@ -125,7 +125,6 @@ function Features() {
                     })
                 }
             },[])
-            console.log(openings)
     const handleViewMore = index => () =>{
          try{   
             if(index >= 0){
@@ -156,6 +155,7 @@ function Features() {
                 <Slider {...settings}>
                     {
                         openings.length > 0 && openings.map((data,index)=>(
+                            
                                  <Card >
                                     <CardContent  >
                                             <div className={classes.contentHead}>

@@ -1,7 +1,7 @@
 import React from 'react';
 import clsx from 'clsx';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
-import { Tooltip ,ListItemIcon, ListItemText, ListItem ,Drawer ,AppBar,Toolbar ,List , CssBaseline ,Typography ,Divider , IconButton ,Menu} from '@material-ui/core'
+import {  useTheme } from '@material-ui/core/styles';
+import { Hidden ,Tooltip ,ListItemIcon, ListItemText, ListItem ,Drawer ,AppBar,Toolbar ,List , CssBaseline ,Typography ,Divider , IconButton ,Menu} from '@material-ui/core'
 import { Menu as MenuIcon, ChevronLeft , ChevronRight , Mail , AccountCircle } from '@material-ui/icons'
 import { routes } from '../../auth/route'
 import { navigate, Link } from 'gatsby';
@@ -22,6 +22,9 @@ export default function MiniDrawer(props) {
     const handleLogout = () =>{
         window.localStorage.removeItem('user')
         navigate('/')
+    }
+    const handleClick = () =>{
+        navigate('/dashboard')
     }
     return (
         <div className={classes.root}>
@@ -44,7 +47,7 @@ export default function MiniDrawer(props) {
                     >
                         <MenuIcon />
                     </IconButton>
-                    <Typography variant="h6"  className={classes.typography}>
+                    <Typography variant="h6"  className={classes.typography} style={{cursor:'pointer'}} onClick={handleClick}>
                         Talent Excel
                    </Typography>
                    {/* <div>
@@ -64,6 +67,45 @@ export default function MiniDrawer(props) {
                       </div>
                 </Toolbar>
             </AppBar>
+            <Hidden smUp implementation="css">
+            <Drawer
+                variant="temporary"
+                className={clsx(classes.drawer, {
+                    [classes.drawerOpen]: open,
+                    [classes.drawerClose]: !open,
+                })}
+                classes={{
+                    paper: clsx({
+                        [classes.drawerOpen]: open,
+                        [classes.drawerClose]: !open,
+                    }),
+                }}
+                open={open}
+                ModalProps={{
+                    keepMounted:true //Better open performance on mobile
+                }}
+            >
+                <div className={classes.toolbar}>
+                    <IconButton onClick={handleDrawerClose}>
+                        {theme.direction === 'rtl' ? <ChevronRight /> : <ChevronLeft />}
+                    </IconButton>
+                </div>
+                <Divider />
+                <List>
+                    {routes && routes.map((route, index) => (
+                        <ListItem button key={route.text}>
+                        <ListItemIcon>{route.icon}</ListItemIcon>
+                            <Link to={`/${route.text.toLowerCase().trim()}`} className={classes.link}> 
+                                <ListItemText primary={route.text}
+                                />
+                            </Link>
+
+                        </ListItem>
+                    ))}
+                </List>
+            </Drawer>
+            </Hidden>
+            <Hidden smDown implementation="css">
             <Drawer
                 variant="permanent"
                 className={clsx(classes.drawer, {
@@ -100,6 +142,7 @@ export default function MiniDrawer(props) {
                     ))}
                 </List>
             </Drawer>
+            </Hidden>
             <main className={classes.content}>
                 <div className={classes.toolbar} />
                 {

@@ -28,7 +28,7 @@ const SiteMetaData = () => {
             <meta property="og:type" content="website" />
             <meta property="og:locale" content="en" />
             <meta property="og:site_name" content={title} />
-           
+            <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"></link>
         </Helmet>
     )
 }
