@@ -80,10 +80,12 @@ export default function MiniDrawer(props) {
                         [classes.drawerClose]: !open,
                     }),
                 }}
+              
                 open={open}
                 ModalProps={{
                     keepMounted:true //Better open performance on mobile
                 }}
+                
             >
                 <div className={classes.toolbar}>
                     <IconButton onClick={handleDrawerClose}>
@@ -91,15 +93,15 @@ export default function MiniDrawer(props) {
                     </IconButton>
                 </div>
                 <Divider />
-                <List>
+                <List >
                     {routes && routes.map((route, index) => (
                         <ListItem button key={route.text}>
-                        <ListItemIcon>{route.icon}</ListItemIcon>
+                             <ListItemIcon>{route.icon}</ListItemIcon>
                             <Link to={`/${route.text.toLowerCase().trim()}`} className={classes.link}> 
+                                
                                 <ListItemText primary={route.text}
                                 />
                             </Link>
-
                         </ListItem>
                     ))}
                 </List>
@@ -122,6 +124,7 @@ export default function MiniDrawer(props) {
                 ModalProps={{
                     keepMounted:true //Better open performance on mobile
                 }}
+               
             >
                 <div className={classes.toolbar}>
                     <IconButton onClick={handleDrawerClose}>
@@ -129,7 +132,7 @@ export default function MiniDrawer(props) {
                     </IconButton>
                 </div>
                 <Divider />
-                <List>
+                <List onMouseEnter={handleDrawerOpen}>
                     {routes && routes.map((route, index) => (
                         <ListItem button key={route.text}>
                         <ListItemIcon>{route.icon}</ListItemIcon>

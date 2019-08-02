@@ -10,3 +10,8 @@
 #   static_files: public/\1
 #   upload: public/(.*)
 runtime: nodejs10
+handlers:
+- url: /.*
+  script: auto
+  secure: always
+  redirect_http_response_code: 301

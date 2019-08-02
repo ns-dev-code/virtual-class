@@ -6,10 +6,11 @@ import firebase from '../../../../lib/firebase'
 import resume from '../../../../images/resume.png'
 import interview from '../../../../images/interview.png'
 import calendar from '../../../../images/calendar.png'
-import { IoIosRefresh , IoMdTime} from 'react-icons/io'
+import { IoIosRefresh } from 'react-icons/io'
 import Applications from '../applications'
 import { navigate } from 'gatsby'
 import { connect } from 'react-redux'
+import { UserProvider } from '../../../../lib/contextApi'
 
 function Overview(props){
     const classes = useStyles()
@@ -17,7 +18,7 @@ function Overview(props){
     const [applicationsCount,setApplicationsCount] = useState(null)
     const [openingsCount,setOpeningsCount] = useState(null)
     const [openings,setOpenings] = useState([])
-    const [applications,setApplications] = useState(null)
+    const [applications,setApplications] = useState([])
 
     useEffect(()=>{
       
@@ -35,8 +36,12 @@ function Overview(props){
                               
                                  firebase.db.collection('applications').where('opening_id','==',opening.id).get()
                                  .then(appl=>{
-                                    setApplicationsCount(appl.size)
                                     setOpenings(openin=>openin.concat(opening.data()))
+                                     if(appl.empty === false){
+                                        appl.docs.map(applied=>{
+                                            setApplications(doc=>doc.concat(applied.data()))
+                                        })
+                                     }
                                  })
                             })
                     }
@@ -44,8 +49,10 @@ function Overview(props){
            
     }
     
-    const refresh = () =>{
-       
+    const refresh =  () =>{
+       setApplicationsCount(null)
+       setOpeningsCount(null)
+       setApplications([])
         getApplications()
     }
     const handleClick = redirect => () =>{
@@ -86,7 +93,7 @@ function Overview(props){
                             </div>
                             <div>
                                 <Typography variant="h5">Applications</Typography>
-                                <Typography variant="h6" align="right">{applicationsCount == null?`0`:applicationsCount}</Typography>
+                                <Typography variant="h6" align="right">{applications.length ? applications.length:`0`}</Typography>
                             </div>
                         </div>
                         </CardContent>
@@ -123,10 +130,14 @@ function Overview(props){
            </Grid>
            <Grid container spacing={3} className={classes.applications}>
                 <Grid  item xs={12} sm={12} md={6} lg={6} xl={6}> 
-                    <Applications 
-                        title='Recently Applied'
-                        Overview={true}
-                    />
+                  {
+                      applications &&  
+                        <Applications 
+                                title='Recently Applied'
+                                overview={true}
+                            />
+                   
+                  }
                 </Grid>
            </Grid>
         </Dash>
