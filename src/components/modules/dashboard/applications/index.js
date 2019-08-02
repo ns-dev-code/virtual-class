@@ -6,7 +6,8 @@ import * as _ from 'lodash'
 import MaterialTable from 'material-table'
 import download from '../../../../images/download.png'
 
-export default function Applications() {
+export default function Applications(props) {
+    const { overview , title } = props
     const classes = useStyles()
     const [applications,setApplications] = useState()
     const [state , setState ] = useState([
@@ -15,16 +16,29 @@ export default function Applications() {
         {title:'Email',field:'email'},
     ])
     useEffect(()=>{
-         firebase.db.collection('applications').onSnapshot(snapshot=>{
-            const application = []
-            snapshot.forEach(doc=>{
-                application.push(doc.data())
-            })
-            const appObject = _.sortBy(application,function(dateObj){
-                return new Date(dateObj.appliedOn)
-            })
-            setApplications(appObject)
-         })
+          if(overview == true){
+            firebase.db.collection('applications').limit(5).onSnapshot(snapshot=>{
+                const application = []
+                snapshot.forEach(doc=>{
+                    application.push(doc.data())
+                })
+                const appObject = _.sortBy(application,function(dateObj){
+                    return new Date(dateObj.appliedOn)
+                })
+                setApplications(appObject)
+             })
+          }else{
+            firebase.db.collection('applications').onSnapshot(snapshot=>{
+                const application = []
+                snapshot.forEach(doc=>{
+                    application.push(doc.data())
+                })
+                const appObject = _.sortBy(application,function(dateObj){
+                    return new Date(dateObj.appliedOn)
+                })
+                setApplications(appObject)
+             })
+          }
     },[])
     
     return (
@@ -36,7 +50,7 @@ export default function Applications() {
         //    </CardContent>
         // </Card>
         <MaterialTable
-            title="Recently Applied"
+            title={title}
             columns={state}
             data={applications}
            

@@ -15,6 +15,10 @@ import firebase from '../../lib/firebase'
 
 const routes = [
     {
+        icon:<Dashboard/>,
+        text:'Dashboard'
+    },
+    {
         icon: <SettingsApplications />,
         text: 'Applications',
     }

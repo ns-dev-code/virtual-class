@@ -9,26 +9,73 @@ import calendar from '../../../../images/calendar.png'
 import { IoIosRefresh , IoMdTime} from 'react-icons/io'
 import Applications from '../applications'
 import { navigate } from 'gatsby'
+import { connect } from 'react-redux'
 
-function Overview(){
+function Overview(props){
     const classes = useStyles()
+    const { user } = props
+    const [applicationsCount,setApplicationsCount] = useState(null)
+    const [openingsCount,setOpeningsCount] = useState(null)
+    const [openings,setOpenings] = useState([])
     const [applications,setApplications] = useState(null)
-    const [openings,setOpenings] = useState(null)
 
     useEffect(()=>{
-        firebase.db.collection('applications').onSnapshot(snapshot=>{
-            setApplications(snapshot.docs.length)
-        })
-        firebase.db.collection('openings').onSnapshot(snapshot=>{
-            setOpenings(snapshot.docs.length)
-        })
+      
+        getApplications()
     },[])
+    const getApplications = () =>{
+            firebase.db.collection('openings').where('createdBy','==',user.email).get()
+            .then(docRef=>{
+                    if(docRef.empty == true){
+                        setOpeningsCount(0)
+                    }
+                    else{
+                            docRef.docs.map(opening=>{
+                                setOpeningsCount(docRef.size)
+                              
+                                 firebase.db.collection('applications').where('opening_id','==',opening.id).get()
+                                 .then(appl=>{
+                                    setApplicationsCount(appl.size)
+                                    setOpenings(openin=>openin.concat(opening.data()))
+                                 })
+                            })
+                    }
+            })
+           
+    }
+    
+    const refresh = () =>{
+       
+        getApplications()
+    }
     const handleClick = redirect => () =>{
             navigate(redirect)
     }
     return(
         <Dash>
            <Grid container spacing={3}>
+           <Grid item xs={12} sm={12} md={3} lg={3} xl={3}>
+                          {/* Openings */}
+                    <Card className={classes.card}>
+                        <CardContent className={classes.cardContent}>
+                        <div className={classes.divIcon}>
+                            <div className={classes.iconImage}> 
+                                <img src={interview} alt="openings"/>
+                            </div>
+                            <div>
+                                <Typography variant="h5" align="right">Openings</Typography>
+                                <Typography variant="h6" align="right">{openingsCount == null?`0`:openingsCount}</Typography>
+                            </div>
+                        </div>
+                        </CardContent>
+                        <Divider variant="middle"/>
+                        <CardActionArea classname={classes.cardActions}>
+                            <CardActions onClick={refresh}>
+                                <Typography className={classes.typography}><IoIosRefresh />in the last hour</Typography>
+                            </CardActions>
+                        </CardActionArea>
+                    </Card>
+                </Grid>
                 <Grid item xs={12} sm={12} md={3} lg={3} xl={3}>
                     {/* Applications */}
                     <Card className={classes.card}>
@@ -39,36 +86,14 @@ function Overview(){
                             </div>
                             <div>
                                 <Typography variant="h5">Applications</Typography>
-                                <Typography variant="h6" align="right">{applications == null?`0`:applications}</Typography>
+                                <Typography variant="h6" align="right">{applicationsCount == null?`0`:applicationsCount}</Typography>
                             </div>
                         </div>
                         </CardContent>
                         <Divider variant="middle"/>
                         <CardActionArea classname={classes.cardActions}>
-                            <CardActions >
+                            <CardActions onClick={refresh} >
                                 <Typography className={classes.typography}><IoIosRefresh />Updated Now</Typography>
-                            </CardActions>
-                        </CardActionArea>
-                    </Card>
-                </Grid>
-                <Grid item xs={12} sm={12} md={3} lg={3} xl={3}>
-                          {/* Openings */}
-                    <Card className={classes.card}>
-                        <CardContent className={classes.cardContent}>
-                        <div className={classes.divIcon}>
-                            <div className={classes.iconImage}> 
-                                <img src={interview} alt="openings"/>
-                            </div>
-                            <div>
-                                <Typography variant="h5" align="right">Openings</Typography>
-                                <Typography variant="h6" align="right">{openings == null?`0`:openings}</Typography>
-                            </div>
-                        </div>
-                        </CardContent>
-                        <Divider variant="middle"/>
-                        <CardActionArea classname={classes.cardActions}>
-                            <CardActions >
-                                <Typography className={classes.typography}><IoIosRefresh />in the last hour</Typography>
                             </CardActions>
                         </CardActionArea>
                     </Card>
@@ -98,10 +123,13 @@ function Overview(){
            </Grid>
            <Grid container spacing={3} className={classes.applications}>
                 <Grid  item xs={12} sm={12} md={6} lg={6} xl={6}> 
-                    <Applications />
+                    <Applications 
+                        title='Recently Applied'
+                        Overview={true}
+                    />
                 </Grid>
            </Grid>
         </Dash>
     )
 }
-export default Overview
+export default connect(state=>({user:state.user}))(Overview)
