@@ -6,6 +6,7 @@ import Animation from '../../animate/animate-aos'
 import SplitPost from 'react-pose-text'
 import {  useTranslation } from 'react-i18next'
 import { navigate } from 'gatsby'
+import Hire from '../../../images/hire.svg'
 
 const Loader = () => <div>Loader ...</div>
 
@@ -39,7 +40,7 @@ function FrontContent(props){
                     </Grid>
                     <Grid item xs={12} sm={6} md={6} className={classes.contentImage} >
                         <Animation direction="fade-up">
-                            <img src={frontImage} alt="frontImage" className={classes.frontImage} />
+                            <img src={Hire} alt="frontImage" className={classes.frontImage} />
                         </Animation>
                     </Grid>
                   </Grid>

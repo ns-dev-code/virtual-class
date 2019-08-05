@@ -8,7 +8,7 @@ const useStyles = makeStyles(theme=>({
     featuresText:{
         color:'#2F2E41',
         fontSize:'larger',
-        fontWeight:'600'
+        fontWeight:'600',
     },
     viewDetails:{
       margin:'1.0rem'
@@ -16,7 +16,7 @@ const useStyles = makeStyles(theme=>({
     jobDescription:{
         margin:'1.0rem',
         cursor:'pointer',
-        height:'9rem'
+        height:'6rem'
     },
     applyButton:{
         backgroundColor:'#2E827D',
@@ -28,7 +28,8 @@ const useStyles = makeStyles(theme=>({
     },
     div:{
         margin:'auto',
-        display:'table'
+        display:'table',
+      
     },
    slider:{
      margin:'1.0rem'
@@ -47,21 +48,34 @@ const useStyles = makeStyles(theme=>({
     
    },
    card:{
-     margin:'10px !important',
-     position:'relative'
+    //  margin:'10px !important',
+    //  position:'relative',
+    width:'248px !important',
+    border:'1px solid #c5eae8'
+   },
+   icons:{
+     height:20,
+     width:20
+   },
+   borderBottom:{
+    // borderBottom: '1px solid #78bcb8 !important',
+    // borderBlockEndWidth: 'initial !important',
+    backgroundColor:'#78bcb8',
+    margin:'15px auto 15px auto',
+    width:'40px',
+    height:'4px'
    }
 }))
 
 const settings = {
+    // className:"center",
+    centerMode:true,
     dots: false,
     arrows:true,
     infinite: true,
     speed: 500,
     slidesToShow: 4,
-    slidesToScroll: 4,
     autoplay:false,
-    autoplaySpeed: 2000,
-    initialSlide: 0,
     responsive: [
       {
         breakpoint: 1024,
@@ -69,7 +83,7 @@ const settings = {
           slidesToShow: 3,
           slidesToScroll: 3,
           infinite: true,
-          dots: true
+          dots: false
         }
       },
       {

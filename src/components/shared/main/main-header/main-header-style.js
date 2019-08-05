@@ -22,7 +22,8 @@ const useStyles = makeStyles(theme=>({
         },
     },
     appBar:{
-        backgroundColor:'#FFFFFF !important'
+        backgroundColor:'#FFFFFF !important',
+        boxShadow:'none !important'
     },
     imageStyle:{
         width:'60%',
@@ -49,9 +50,9 @@ const useStyles = makeStyles(theme=>({
     },
     button:{
          
-        '&:hover':{
-            borderBottom:'3px solid #4AB8B3'
-        }
+        // '&:hover':{
+        //     borderBottom:'3px solid #4AB8B3'
+        // }
     },
     body : {
         padding: '0'
