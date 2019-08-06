@@ -51,7 +51,22 @@ const useStyles = makeStyles(theme=>({
     //  margin:'10px !important',
     //  position:'relative',
     width:'248px !important',
-    border:'1px solid #c5eae8'
+    border:'1px solid #c5eae8',
+    [theme.breakpoints.down('md')]:{
+      width:'200px !important',
+      marginLeft:'20px !important',
+      marginRight:'20px !important'
+    },
+    [theme.breakpoints.down('sm')]:{
+      width:'190px !important',
+      marginLeft:'20px !important',
+      marginRight:'20px !important'
+    },
+    [theme.breakpoints.down('xs')]:{
+      width:'200px !important',
+      marginLeft:'20px !important',
+      marginRight:'20px !important'
+    }
    },
    icons:{
      height:20,
@@ -64,11 +79,15 @@ const useStyles = makeStyles(theme=>({
     margin:'15px auto 15px auto',
     width:'40px',
     height:'4px'
+   },
+   contentHead:{
+    
+    
    }
 }))
 
 const settings = {
-    // className:"center",
+    className:"center",
     centerMode:true,
     dots: false,
     arrows:true,
@@ -89,16 +108,17 @@ const settings = {
       {
         breakpoint: 600,
         settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-          initialSlide: 2
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          initialSlide: 1
         }
       },
       {
         breakpoint: 480,
         settings: {
           slidesToShow: 1,
-          slidesToScroll: 1
+          slidesToScroll: 1,
+          initialSlide:1
         }
       }
     ]

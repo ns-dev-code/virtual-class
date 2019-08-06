@@ -15,5 +15,9 @@
         "Apply Here":"Apply Here",
         "Upload Your CV":"Upload CV",
         "Send Application":"Send Application"
-    }
+    },
+    "Forgot your password?":"Forgot your password?",
+    "Enter your account email to receive a link allowing you to reset your password.":"Enter your account email to receive a link allowing you to reset your password.",
+    "Cancel":"Cancel",
+    "Send Email":"Send Email"
 }

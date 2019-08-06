@@ -8,8 +8,10 @@ import firebase from '../../../lib/firebase'
 import JobDetails from './job-details'
 import {  navigate } from 'gatsby'
 import { useTranslation } from 'react-i18next'
-import 'slick-carousel/slick/slick.css'
-import 'slick-carousel/slick/slick-theme.css'
+// import 'slick-carousel/slick/slick.css'
+// import 'slick-carousel/slick/slick-theme.css'
+// import '../../../styles/slick-slider/slick.css'
+// import '../../../styles/slick-slider/slick-theme.css'
 import * as _ from 'lodash'
 import world from '../../../images/icons/world.svg'
 import job from '../../../images/icons/job.svg'
@@ -83,7 +85,7 @@ function Features() {
                             openings.length > 0 && openings.map((data,index)=>(
                                 
                                      <Card className={classes.card}>
-                                        <CardContent  >
+                                        <CardContent className={classes.contentHead} >
                                                 <div className={classes.contentHead}>
                                                     <Typography align="center" variant="h6" className={classes.featuresText}>{data.title}</Typography>
                                                 </div>

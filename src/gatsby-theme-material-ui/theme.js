@@ -15,6 +15,9 @@ const theme = createMuiTheme({
             default:`#fff`
         },
     },
+    typography:{
+        fontFamily:'serif'
+    }
     
 })
 

@@ -5,15 +5,18 @@ const useStyles = makeStyles(theme=>({
         width: "30%",
         margin: '5rem auto',
         padding: '20px',
+        boxShadow:'none',
         [theme.breakpoints.down('sm')]:{
             width:'100%',
             margin:'1rem auto'
         }
    },
    text:{
-       fontWeight:'600',
+    //    fontWeight:'600',
        marginBottom:'1rem',
-       color:'#3F3D56'
+       color:'#3F3D56',
+       fontSize:'large',
+       fontWeight:'600'
    },
    textField:{
        margin:'1rem auto 1rem auto'
@@ -36,8 +39,20 @@ const useStyles = makeStyles(theme=>({
    },
    image:{
        width:'60%',
-       margin:'auto',
+       margin:'1rem auto 1rem auto',
        display:'table'
+   },
+   forgotPassword:{
+       cursor:'pointer',
+       color:'#665ed0',
+       margin:'24px 0 0 0'
+   },
+   textColor:{
+    color:'#665ed0',
+    cursor:'pointer'
+   },
+   new:{
+       margin:'24px 0 0 0'
    }
 }))
 

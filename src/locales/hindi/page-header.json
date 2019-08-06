@@ -16,5 +16,9 @@
         "Apply Here":"यहां आवेदन करें",
         "Upload Your CV":"बायोडाटा अपलोड करो",
         "Send Application":"आवेदन भेजें"
-    }
+    },
+    "Forgot Your Password?":"क्या आप पासवर्ड भूल गए?",
+    "Enter your account email to receive a link allowing you to reset your password.":"एक लिंक प्राप्त करने के लिए अपना खाता ईमेल दर्ज करें जिससे आप अपना पासवर्ड रीसेट कर सकें।",
+    "Cancel":"रद्द करना",
+    "Send Email":"ईमेल भेजें"
 }

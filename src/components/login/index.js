@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { navigateTo, Link } from 'gatsby'
+import { navigate, Link } from 'gatsby'
 import {  Typography, TextField, Paper  } from '@material-ui/core'
 import firebase from '../../utils/firebase'
 import {connect}  from 'react-redux'
@@ -7,6 +7,8 @@ import { login } from '../../lib/redux/actions'
 import {useStyles} from './login-styles'
 import password from '../../images/password.png'
 import { withSnackbar } from 'notistack'
+import Footer from '../shared/main/main-footer'
+import talentExcel from '../../images/talent-excel-logo.png'
 
 function Login(props){
     
@@ -37,7 +39,7 @@ function Login(props){
 
                 props.login(useCredentials.user)
 
-                navigateTo('/dashboard')
+                navigate('/dashboard')
             }
             catch(error){
                 props.enqueueSnackbar(error.message,{variant:'error'})
@@ -45,14 +47,20 @@ function Login(props){
             }
         }
     }
+    const handleNavigate = () =>{
+        navigate('/')
+    }
+    const handlePasswordReset = () =>{
+        navigate('/forgot-password')
+    }
 
     return(
         <React.Fragment>
             <Paper className={classes.root}>
-                <div style={{margin:'auto'}}>
-                    <img src={password} alt="loginImage" className={classes.image}/>
+                <div style={{margin:'auto',cursor:'pointer'}} onClick={handleNavigate}>
+                    <img src={talentExcel} alt="loginImage" className={classes.image}/>
                 </div>
-               <Typography align="center" variant="h6" className={classes.text}>Login Here</Typography>
+               <Typography align="center" variant="h6" className={classes.text}>Login</Typography>
                 <TextField
                     name="email"
                     error={error}
@@ -81,7 +89,10 @@ function Login(props){
                  <div className={classes.button} onClick={handleSubmit}>
                      <Typography align="center" >Sign in</Typography>
                  </div>
+                 <Typography align="center" className={classes.forgotPassword} onClick={handlePasswordReset}>Forgot password?</Typography>
+                 <Typography align="center" className={classes.new}>New to Talent Excel ? <span className={classes.textColor}>Join Now</span></Typography>
             </Paper>
+            <Footer/>
         </React.Fragment>
     )
 }
