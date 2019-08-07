@@ -7,11 +7,13 @@ import Dash from '../../components/modules/dashboard/'
 import SEO from '../../components/site-meta-data'
 import Overview from '../../components/modules/dashboard/overview'
 
-const Dashboard = () => {
+const Dashboard = (props) => {
+
+    console.log(props)
     const [user, setUser] = useState('');
 
     return (
-        <Auth>
+        <Auth {...props}>
             <SEO/>
             <React.Fragment>
                 {

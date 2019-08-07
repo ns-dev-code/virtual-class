@@ -8,9 +8,9 @@ module.exports = {
   },
   plugins: [
     {
-      resolve:`gatsby-plugin-create-client-paths`,
-      options:{
-        prefixes:[`/apply-now/*`,'/reset-password/*']
+      resolve: `gatsby-plugin-create-client-paths`,
+      options: {
+        prefixes: [`/apply-now/*`, '/dashboard/*', '/authorise/*', '/reset-password/*']
       }
     },
     `gatsby-plugin-react-helmet`,
@@ -22,6 +22,7 @@ module.exports = {
       },
     },
     `gatsby-transformer-sharp`,
+    `gatsby-plugin-no-sourcemaps`,
     `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-plugin-manifest`,
@@ -29,7 +30,7 @@ module.exports = {
         name: `Talent Excel`,
         short_name: `Talent Excel`,
         start_url: `/?utm_source=launcher`,
-        background_color: `#ffffff`,
+        background_color: `#eae9f4`,
         theme_color: `#4ab8b3`,
         display: `standalone`,
         icon: `src/images/talent.png`, // This path is relative to the root of the site.
@@ -38,7 +39,7 @@ module.exports = {
     },
     `gatsby-plugin-offline`,
     `gatsby-theme-material-ui`,
-    `gatsby-transformer-sharp`, 
+    `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-offline`,
     {
@@ -57,5 +58,5 @@ module.exports = {
       },
     },
   ],
-  
+
 }

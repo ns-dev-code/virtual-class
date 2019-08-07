@@ -45,18 +45,6 @@ const useStyles = makeStyles(theme => ({
     },
     linkedinButton: {
         width: '75%'
-    },
-    forgotPassword: {
-        color: ' #665ed0',
-        cursor: 'pointer',
-        margin: '24px 0 0 0'
-    },
-    new: {
-
-    },
-    textColor: {
-        color: '#665ed0',
-        cursor: 'pointer'
     }
 }))
 

@@ -2,26 +2,23 @@ import React, { useState } from 'react'
 import { navigateTo, Link, navigate } from 'gatsby'
 import { Typography, TextField, Paper } from '@material-ui/core'
 import firebase from '../../utils/firebase'
-import { connect } from 'react-redux'
-import { login } from '../../lib/redux/actions'
-import { useStyles } from './login-styles'
+
+import { useStyles } from './register-styles'
 import password from '../../images/password.png'
 import linkedin from '../../images/linkedin.png'
 import { withSnackbar } from 'notistack'
-import Footer from '../shared/main/main-footer'
-import talentExcel from '../../images/talent-excel-logo.png'
-import { Formik } from 'formik'
-
 import Axios from 'axios';
 import { cloudApi } from '../../config'
-
-function Login(props) {
+import * as _ from 'lodash'
+function Register(props) {
 
     const classes = useStyles()
     const [error, setError] = useState(false)
     const [state, setState] = useState({
         email: '',
-        password: ''
+        password: '',
+        firstname: '',
+        lastname: ''
     })
     const handleChange = (event) => {
         setState({
@@ -46,31 +43,29 @@ function Login(props) {
     }
 
     const handleSubmit = async () => {
-        const { email, password } = state
-        if (!email || !password) {
+        const { email, password, firstname, lastname } = state
+        if (!email || !password || !firebase || !lastname) {
             setError(true)
             props.enqueueSnackbar('All Fields are required', { variant: 'warning' })
         }
         else {
             setError(false)
             try {
-                const useCredentials = await firebase.auth.signInWithEmailAndPassword(email, password)
+                const useCredentials = await Axios.post(`${cloudApi}/registerUser`, {
+                    email: email,
+                    password: password,
+                    displaName: `${_.capitalize(firstname + " " + lastname)}`
+                })
 
-                props.login(useCredentials.user)
-
-                navigate('/dashboard')
+                //props.login(useCredentials.user)
+                props.enqueueSnackbar('Registered Successfully', { variant: 'success' })
+                // navigateTo('/dashboard')
             }
             catch (error) {
                 props.enqueueSnackbar(error.message, { variant: 'error' })
                 setError(false)
             }
         }
-    }
-    const handleNavigate = () => {
-        navigate('/')
-    }
-    const handlePasswordReset = () => {
-        navigate('/forgot-password')
     }
 
     return (
@@ -79,7 +74,31 @@ function Login(props) {
                 <div style={{ margin: 'auto' }}>
                     <img src={password} alt="loginImage" className={classes.image} />
                 </div>
-                <Typography align="center" variant="h6" className={classes.text}>Login Here</Typography>
+                <Typography align="center" variant="h6" className={classes.text}>Register Here</Typography>
+                <TextField
+                    name="firstname"
+                    error={error}
+                    label="Enter Firstname"
+                    placeholder="Please Enter your firstname"
+                    variant="outlined"
+                    onChange={handleChange}
+                    value={state.firstname}
+                    fullWidth
+                    type="text"
+                    className={classes.textField}
+                />
+                <TextField
+                    name="lastname"
+                    error={error}
+                    label="Enter Lastname"
+                    placeholder="Please Enter your lastname"
+                    variant="outlined"
+                    onChange={handleChange}
+                    value={state.lastname}
+                    fullWidth
+                    type="text"
+                    className={classes.textField}
+                />
                 <TextField
                     name="email"
                     error={error}
@@ -106,18 +125,11 @@ function Login(props) {
                 />
 
                 <div className={classes.button} onClick={handleSubmit}>
-                    <Typography align="center" >Sign in</Typography>
+                    <Typography align="center" >Sign Up</Typography>
                 </div>
-                <Typography align="center" className={classes.forgotPassword} onClick={handlePasswordReset}>Forgot password?</Typography>
-                <Typography align="center" className={classes.new}>New to Talent Excel ? <span className={classes.textColor}>Join Now</span></Typography>
 
-                <div className={classes.linkedin} >
-                    <a href={`${cloudApi}/auth/linkedin`}> <img className={classes.linkedinButton} src={linkedin} /></a>
-                </div>
             </Paper>
-            <Footer />
         </React.Fragment>
     )
 }
-
-export default withSnackbar(connect(null, { login })(Login))
+export default withSnackbar(Register)
