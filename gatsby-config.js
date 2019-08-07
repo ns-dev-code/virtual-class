@@ -10,7 +10,7 @@ module.exports = {
     {
       resolve:`gatsby-plugin-create-client-paths`,
       options:{
-        prefixes:[`/apply-now/*`]
+        prefixes:[`/apply-now/*`,'/reset-password/*']
       }
     },
     `gatsby-plugin-react-helmet`,
