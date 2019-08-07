@@ -17,6 +17,11 @@ app.get('/authorise/:id', (req, res) => {
 app.get('/apply-now/:id', (req, res) => {
     res.sendFile(`${__dirname}/public/apply-now/`)
 })
+
+app.get('/reset-password/:id',(req,res)=>{
+    res.sendFile(`${__dirname}/public/reset-password/`)
+})
+
 app.listen(8080, () => {
     console.log(`App Listening to port 8080`)
 })

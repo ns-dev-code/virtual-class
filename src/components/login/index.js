@@ -1,16 +1,16 @@
 import React, { useState } from 'react'
 import { navigateTo, Link, navigate } from 'gatsby'
-import { Typography, TextField, Paper } from '@material-ui/core'
+import { Typography, TextField, Paper , Fab} from '@material-ui/core'
 import firebase from '../../utils/firebase'
 import { connect } from 'react-redux'
 import { login } from '../../lib/redux/actions'
 import { useStyles } from './login-styles'
 import password from '../../images/password.png'
-import linkedin from '../../images/linkedin.png'
 import { withSnackbar } from 'notistack'
 import Footer from '../shared/main/main-footer'
 import talentExcel from '../../images/talent-excel-logo.png'
 import { Formik } from 'formik'
+import linkedin from '../../images/icons/linkedin.svg'
 
 import Axios from 'axios';
 import { cloudApi } from '../../config'
@@ -23,49 +23,16 @@ function Login(props) {
         email: '',
         password: ''
     })
-    const handleChange = (event) => {
-        setState({
-            ...state,
-            [event.target.name]: event.target.value
-        })
+    
+    const {
+        values:{email , password},
+        errors,touched,handleSubmit,handleChange,isValid,setFieldTouched,res
+    } = props
+
+    if(res != null){
+        props.enqueueSnackbar(res,{variant:'error'})
     }
 
-    const handleLinkedIn = () => {
-        // Axios.get(`http://localhost:8080/auth/linkedIn`, {
-
-        // }).then(response => {
-        //     console.log(response.data)
-        // })
-
-        let params = `scrollbars=no,resizable=no,status=no,location=no,toolbar=no,menubar=no,
-                        width=400,height=700,left=300,top=100`;
-
-        const opener = window.open('http://localhost:8080/auth/linkedin', 'test', params);
-        console.log(opener.parent)
-
-    }
-
-    const handleSubmit = async () => {
-        const { email, password } = state
-        if (!email || !password) {
-            setError(true)
-            props.enqueueSnackbar('All Fields are required', { variant: 'warning' })
-        }
-        else {
-            setError(false)
-            try {
-                const useCredentials = await firebase.auth.signInWithEmailAndPassword(email, password)
-
-                props.login(useCredentials.user)
-
-                navigate('/dashboard')
-            }
-            catch (error) {
-                props.enqueueSnackbar(error.message, { variant: 'error' })
-                setError(false)
-            }
-        }
-    }
     const handleNavigate = () => {
         navigate('/')
     }
@@ -76,44 +43,59 @@ function Login(props) {
     return (
         <React.Fragment>
             <Paper className={classes.root}>
-                <div style={{ margin: 'auto' }}>
-                    <img src={password} alt="loginImage" className={classes.image} />
+                <div style={{ margin: 'auto',cursor:'pointer' }} onClick={handleNavigate}>
+                    <img src={talentExcel} alt="loginImage" className={classes.image} />
                 </div>
-                <Typography align="center" variant="h6" className={classes.text}>Login Here</Typography>
-                <TextField
+                <Typography align="center" variant="h6" className={classes.text}>Login with</Typography>
+                <div className={classes.linkedin} >
+                    <a href={`${cloudApi}/auth/linkedin`}> <img className={classes.linkedinButton} src={linkedin} /></a>
+                </div>
+                 <form onSubmit={handleSubmit}>
+                 <TextField
                     name="email"
-                    error={error}
+                    error={Boolean(errors.email)}
                     label="Enter Email"
                     placeholder="Please Enter your email"
                     variant="outlined"
                     onChange={handleChange}
-                    value={state.email}
+                    value={email}
                     fullWidth
                     type="email"
                     className={classes.textField}
+                    helperText={errors.email}
                 />
                 <TextField
                     name="password"
                     label="Enter Password"
                     placeholder="Please Enter your password"
-                    error={error}
+                    error={Boolean(errors.password)}
                     variant="outlined"
                     onChange={handleChange}
                     fullWidth
-                    value={state.password}
+                    value={password}
                     type="password"
                     className={classes.textField}
+                    helperText={errors.password}
                 />
 
-                <div className={classes.button} onClick={handleSubmit}>
+                {/* <div className={classes.button} onClick={handleSubmit}>
                     <Typography align="center" >Sign in</Typography>
-                </div>
+                </div> */}
+                 <Fab
+                    variant="extended"
+                    type="submit"
+                    size="large"
+                    color="secondary"
+                    className={classes.button}
+                    disabled={!isValid}
+                 >
+                     Sign in
+                 </Fab>
+                 </form>
                 <Typography align="center" className={classes.forgotPassword} onClick={handlePasswordReset}>Forgot password?</Typography>
                 <Typography align="center" className={classes.new}>New to Talent Excel ? <span className={classes.textColor}>Join Now</span></Typography>
 
-                <div className={classes.linkedin} >
-                    <a href={`${cloudApi}/auth/linkedin`}> <img className={classes.linkedinButton} src={linkedin} /></a>
-                </div>
+               
             </Paper>
             <Footer />
         </React.Fragment>

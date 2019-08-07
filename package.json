@@ -58,7 +58,8 @@
     "redux": "^4.0.4",
     "redux-persist": "^5.10.0",
     "scrollmonitor-react": "^2.4.1",
-    "slick-carousel": "^1.8.1"
+    "slick-carousel": "^1.8.1",
+    "yup": "^0.27.0"
   },
   "devDependencies": {
     "prettier": "^1.18.2"

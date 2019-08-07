@@ -22,9 +22,9 @@ function Header(props){
                         </div>
                         <div className={classes.contentContainer}>
                         <LanguageSwitcher/>
-                        <Button size="large" className={classes.button}>
+                        {/* <Button size="large" className={classes.button}>
                            <span >{t('About Us')}</span>
-                        </Button>
+                        </Button> */}
                         </div>
                         <div className={classes.sectionMobile}>
                          <LanguageSwitcher/>
