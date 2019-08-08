@@ -33,8 +33,18 @@ function Login(props) {
         props.enqueueSnackbar(res,{variant:'error'})
     }
 
-    const handleNavigate = () => {
-        navigate('/')
+    const handleNavigate = redirect => () => {
+        switch(redirect){
+            case 'home':
+                navigate('/')
+            break;
+            case 'register':
+                navigate('/register')
+            break;
+            default:
+                navigate('/login')
+            break;
+        }
     }
     const handlePasswordReset = () => {
         navigate('/forgot-password')
@@ -43,7 +53,7 @@ function Login(props) {
     return (
         <React.Fragment>
             <Paper className={classes.root}>
-                <div style={{ margin: 'auto',cursor:'pointer' }} onClick={handleNavigate}>
+                <div style={{ margin: 'auto',cursor:'pointer' }} onClick={handleNavigate('home')}>
                     <img src={talentExcel} alt="loginImage" className={classes.image} />
                 </div>
                 <Typography align="center" variant="h6" className={classes.text}>Login with</Typography>
@@ -93,7 +103,7 @@ function Login(props) {
                  </Fab>
                  </form>
                 <Typography align="center" className={classes.forgotPassword} onClick={handlePasswordReset}>Forgot password?</Typography>
-                <Typography align="center" className={classes.new}>New to Talent Excel ? <span className={classes.textColor}>Join Now</span></Typography>
+                <Typography align="center" className={classes.new}>New to Talent Excel ? <span className={classes.textColor} onClick={handleNavigate('register')}>Join Now</span></Typography>
 
                
             </Paper>

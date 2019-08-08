@@ -56,6 +56,11 @@ const useStyles = makeStyles(theme=>({
     },
     body : {
         padding: '0'
+    },
+    joinNow:{
+        color: 'black',
+        backgroundColor: 'white',
+        border: '2px solid #11958e',
     }
 }))
 

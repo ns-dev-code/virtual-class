@@ -8,6 +8,8 @@ import firebase from '../../lib/firebase'
 import { connect } from 'react-redux'
 import { login } from '../../lib/redux/actions'
 import { navigate } from 'gatsby'
+import loader from '../../images/icons/loader.svg'
+import LoadingOverlay from 'react-loading-overlay'
 
 const validationSchema = Yup.object({
     email:Yup.string("Enter Email")
@@ -19,6 +21,8 @@ const validationSchema = Yup.object({
 
 function LoginPage(props){
     const [error,setError] = useState(null)
+    const [loading ,setLoading] = useState(true)
+   
     const handleSubmit = async(data) =>{
        try{
         const useCredentials = await firebase.auth.signInWithEmailAndPassword(data.email, data.password)
@@ -35,15 +39,18 @@ function LoginPage(props){
     const values = {email:'',password:''}
  
     return(
-        <SnackbarProvider maxSnack={1} anchorOrigin={{horizontal:'right',vertical:'top'}}>
-            <SEO/>
-            <Formik
-                render={props=> <Login {...props} res={error}/>}
-                validationSchema={validationSchema}
-                initialValues={values}
-                onSubmit={handleSubmit}
-            />
-        </SnackbarProvider>
+           
+                <SnackbarProvider maxSnack={1} anchorOrigin={{horizontal:'right',vertical:'top'}}>
+                 <SEO/>
+            
+                    <Formik
+                        render={props=> <Login {...props} res={error}/>}
+                        validationSchema={validationSchema}
+                        initialValues={values}
+                        onSubmit={handleSubmit}
+                    />
+            
+            </SnackbarProvider> 
     )
 }
 export default connect(null,{ login })(LoginPage)

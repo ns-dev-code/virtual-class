@@ -15,7 +15,7 @@ function FrontContent(props){
     const classes = useStyles()
     const { t } = useTranslation('translation')
     const handleClick = () =>{
-        navigate('/login')
+        navigate('/register')
     }
     if(t){
         return(
