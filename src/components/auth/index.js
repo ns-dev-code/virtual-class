@@ -6,14 +6,12 @@ import { login } from '../../lib/redux/actions'
 
 function auth(props) {
 
-   const { '*': id } = props
-
    const [user, setUser] = useState(null)
    useEffect(() => {
       const currentUser = firebase.auth.currentUser;
       const user = JSON.parse(window.localStorage.getItem("user"))
      
-      if (!user)
+      if (!user.emailVerified)
          navigate('/login')
       else {
          setUser(user)

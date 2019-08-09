@@ -58,6 +58,9 @@ const useStyles = makeStyles(theme => ({
     signIn:{
         color:'#665ed0',
         cursor:'pointer'
+    },
+    select:{
+        minWidth:'100%'
     }
 }))
 

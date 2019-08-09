@@ -9,6 +9,9 @@ app.get('/', (req, res) => {
     res.sendFile(`${__dirname}/public/`)
 })
 
+app.get('/login/:id',(req,res)=>{
+    res.sendFile(`${__dirname}/login`)
+})
 
 app.get('/authorise/:id', (req, res) => {
     res.sendFile(`${__dirname}/public/authorise/`)

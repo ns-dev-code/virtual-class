@@ -1,6 +1,6 @@
-import React , { useState }from 'react'
+import React , { useState , useEffect }from 'react'
 import {  navigate } from 'gatsby'
-import { Typography, TextField, Paper , Fab , InputAdornment, IconButton} from '@material-ui/core'
+import { Typography, TextField, Paper , Fab , InputAdornment, IconButton , InputLabel , FormControl, Select , OutlinedInput, FormHelperText} from '@material-ui/core'
 import talentExcel from '../../images/talent-excel-logo.png'
 import { useStyles } from './register-styles'
 import { withSnackbar } from 'notistack'
@@ -9,47 +9,26 @@ import { Visibility , VisibilityOff } from '@material-ui/icons'
 
 function Register(props) {
     const {
-        values:{firstName,lastName,email,password,confirmPassword},
+        values:{firstName,lastName,email,userType,password},
         handleChange,
         handleSubmit,
         errors,
         touched,
         isValid,
-       
-    } = props
+        setStatus,
+    } = props;
     const classes = useStyles() 
-    const [showPassword , setShowPassword ]= useState(false)
-
+    const [showPassword , setShowPassword ]= useState(false);
+    const inputLabel = React.useRef(null);
+    const [labelWidth,setLabelWidth] = useState(0);
+    useEffect(()=>{
+        setLabelWidth(inputLabel.current.offsetWidth);
+    },[]);
 
     const handleShowPassword = () =>{
-        setShowPassword(!showPassword)
-    }
+        setShowPassword(!showPassword);
+    };
    
-    // const handleSubmit = async () => {
-    //     const { email, password, firstname, lastname } = state
-    //     if (!email || !password || !firebase || !lastname) {
-    //         setError(true)
-    //         props.enqueueSnackbar('All Fields are required', { variant: 'warning' })
-    //     }
-    //     else {
-    //         setError(false)
-    //         try {
-    //             const useCredentials = await Axios.post(`${cloudApi}/registerUser`, {
-    //                 email: email,
-    //                 password: password,
-    //                 displaName: `${_.capitalize(firstname + " " + lastname)}`
-    //             })
-
-    //             //props.login(useCredentials.user)
-    //             props.enqueueSnackbar('Registered Successfully', { variant: 'success' })
-    //             // navigateTo('/dashboard')
-    //         }
-    //         catch (error) {
-    //             props.enqueueSnackbar(error.message, { variant: 'error' })
-    //             setError(false)
-    //         }
-    //     }
-    // }
     const handleClick = redirect => () =>{
         switch(redirect){
             case 'home':navigate('/');break;
@@ -65,7 +44,7 @@ function Register(props) {
                     <img src={talentExcel} alt="loginImage" className={classes.image} />
                 </div>
                 <Typography align="center" variant="h6" className={classes.text}>Register Here</Typography>
-                <form onSubmit={handleSubmit} autoComplete="off">
+                <form onSubmit={handleSubmit} autoComplete="off" >
                         <TextField
                             name="firstName"
                             error={Boolean(errors.firstName)}
@@ -77,21 +56,36 @@ function Register(props) {
                             fullWidth
                             type="text"
                             className={classes.textField}
-                            helperText={errors.firstName}
+                            helperText={errors.firstName && errors.firstName}
                         />
                         <TextField
                             name="lastName"
                             error={Boolean(errors.lastName)}
                             label="Last Name"
-                            placeholder="Enter your last name"
+                            placeholder="Enter last name"
                             variant="outlined"
                             onChange={handleChange}
                             value={lastName}
                             fullWidth
                             type="text"
                             className={classes.textField}
-                            helperText={errors.lastName}
+                            helperText={errors.lastName && errors.lastName}
                         />
+                        <FormControl variant="outlined" className={classes.select}>
+                            <InputLabel ref={inputLabel} htmlFor="userType-outlined">Select user type</InputLabel>
+                            <Select
+                                native
+                                value={userType}
+                                placeholder="Select user type"
+                                onChange={handleChange}
+                                input={<OutlinedInput name="userType" labelWidth={labelWidth} id="userType-outlined"/>}
+                            >
+                                <option value="" />
+                                <option value="student">Student</option>
+                                <option value="recruiter">Recruiter</option>
+                            </Select>
+                            {/* <FormHelperText>{errors.userType}</FormHelperText> */}
+                        </FormControl>
                         <TextField
                             name="email"
                             error={Boolean(errors.email)}
