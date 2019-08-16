@@ -60,6 +60,7 @@ function Login(props) {
                 <div className={classes.linkedin} >
                     <a href={`${cloudApi}/auth/linkedin`}> <img className={classes.linkedinButton} src={linkedin} /></a>
                 </div>
+                 <Typography align="center" style={{color: '#766666'}}>OR</Typography>
                  <form onSubmit={handleSubmit}>
                  <TextField
                     name="email"

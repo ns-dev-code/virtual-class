@@ -25,9 +25,9 @@ function FrontContent(props){
                     <Grid item xs={12} sm={6} md={6} className={classes.textPadding}>
                             <div >
                             <Typography variant="h3" align="center" className={classes.texthead}>
-                                    <SplitPost initialPose="exit" pose="enter" charPoses={charPose}>
+                                    {/* <SplitPost initialPose="exit" pose="enter" charPoses={charPose}> */}
                                     {t('Talent Development & Discovery Platform')}
-                                    </SplitPost>
+                                    {/* </SplitPost> */}
                                   </Typography>
                             <div className={classes.getStarted} onClick={handleClick}>
                                <div className={classes.getStartedContent}>

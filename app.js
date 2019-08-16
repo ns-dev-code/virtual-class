@@ -1,4 +1,5 @@
 const express = require('express')
+global.$ = require('jquery')
 
 const app = express()
 

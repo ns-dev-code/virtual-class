@@ -29,7 +29,7 @@ const useStyles = makeStyles(theme=>({
     },
     textPadding:{
         padding:'4rem !important',
-        backgroundImage: `url(${newsImage})`,
+        // backgroundImage: `url(${newsImage})`,
         backgroundSize:'cover',
         [theme.breakpoints.down('md')]:{
             padding:'0rem !important',

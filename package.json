@@ -5,6 +5,7 @@
   "version": "0.1.0",
   "author": "Talent Exel",
   "dependencies": {
+    "@loadable/component": "^5.10.2",
     "@material-ui/core": "^4.3.0",
     "@material-ui/icons": "^4.2.1",
     "@material-ui/styles": "^4.3.0",
@@ -26,6 +27,7 @@
     "gatsby-plugin-manifest": "^2.2.3",
     "gatsby-plugin-no-sourcemaps": "^2.1.1",
     "gatsby-plugin-offline": "^2.2.4",
+    "gatsby-plugin-polyfill-io": "^1.1.0",
     "gatsby-plugin-react-helmet": "^3.1.2",
     "gatsby-plugin-react-redux": "^1.0.10",
     "gatsby-plugin-sharp": "^2.2.7",
@@ -51,6 +53,7 @@
     "react-i18next": "^10.11.4",
     "react-icons": "^3.7.0",
     "react-loading-overlay": "^1.0.1",
+    "react-owl-carousel": "^2.3.1",
     "react-pose": "^4.0.8",
     "react-pose-text": "^3.1.0",
     "react-redux": "^7.1.0",
@@ -60,6 +63,7 @@
     "redux-persist": "^5.10.0",
     "scrollmonitor-react": "^2.4.1",
     "slick-carousel": "^1.8.1",
+    "webpack": "^4.39.2",
     "yup": "^0.27.0"
   },
   "devDependencies": {

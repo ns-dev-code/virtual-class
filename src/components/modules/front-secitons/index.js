@@ -26,9 +26,8 @@ function GettingStarted(props){
                                 {t('Transform Your Business')}
                             </Typography><br/>
                             <Typography className={classes. captionText} align="center">
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-                                when an unknown printer took a galley of type and scrambled it to make a type 
+                                The Talent Excel enables teams to work together in one system,
+                                across every phase of the talent lifecycle. Manage relationships, not applicants.
                             </Typography>
                             </Animation>
                        </Grid>

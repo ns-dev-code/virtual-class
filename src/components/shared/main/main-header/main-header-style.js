@@ -61,6 +61,9 @@ const useStyles = makeStyles(theme=>({
         color: 'black',
         backgroundColor: 'white',
         border: '2px solid #11958e',
+        '&:hover':{
+            color:'white'
+        }
     }
 }))
 

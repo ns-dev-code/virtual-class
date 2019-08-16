@@ -22,7 +22,6 @@ module.exports = {
       },
     },
     `gatsby-transformer-sharp`,
-    `gatsby-plugin-no-sourcemaps`,
     `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-plugin-manifest`,
@@ -57,6 +56,15 @@ module.exports = {
         },
       },
     },
+    {
+      resolve:`gatsby-plugin-polyfill-io`,
+      options:{
+        features:[`Array.prototype.map`,`fetch`,`default`,`es2015`,`es2017`,`es5`,`es6`,`es7`,`Array.from`,`Array.isArray`,
+                  `Array.prototype.copyWithin`,`Array.prototype.entries`,`Array.prototype.findIndex`,`Array.prototype.forEach`,
+                  `Array.prototype.map`,`Array.prototype.reduce`,`Array.prototype.values`,`Blob`,`Date.now`,`JSON`,`Map`,`~viewport`,
+                  `~html5-elements`]
+      }
+    }
   ],
 
 }
