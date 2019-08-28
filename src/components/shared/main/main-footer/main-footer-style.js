@@ -17,6 +17,12 @@ const useStyles = makeStyles(theme=>({
           paddingBottom: theme.spacing(6),
         },
       },
+      typography:{
+        [theme.breakpoints.down('sm')]: {
+          fontSize:'0.875rem !important'
+        },
+      }
+     
 }))
 
 export { useStyles }

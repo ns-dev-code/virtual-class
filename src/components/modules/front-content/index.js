@@ -1,14 +1,14 @@
-import React , {Suspense} from 'react'
-import { Typography , Grid } from '@material-ui/core'
-import { useStyles , charPose , textHead } from './front-styles'
-import frontImage from '../../../images/main.png'
-import Animation from '../../animate/animate-aos'
-import SplitPost from 'react-pose-text'
-import {  useTranslation } from 'react-i18next'
-import { navigate } from 'gatsby'
-import Hire from '../../../images/hire.svg'
+import React  from 'react';
+import { Typography , Grid } from '@material-ui/core';
+import { useStyles , charPose , textHead } from './front-styles';
+import frontImage from '../../../images/main.png';
+import Animation from '../../animate/animate-aos';
+import SplitPost from 'react-pose-text';
+import {  useTranslation } from 'react-i18next';
+import Img from 'gatsby-image';
+import { navigate , StaticQuery , graphql } from 'gatsby';
+import Hire from '../../../images/hire.svg';
 
-const Loader = () => <div>Loader ...</div>
 
 function FrontContent(props){
 
@@ -38,11 +38,29 @@ function FrontContent(props){
                             </div>
                         </div>
                     </Grid>
-                    <Grid item xs={12} sm={6} md={6} className={classes.contentImage} >
-                        <Animation direction="fade-up">
-                            <img src={Hire} alt="frontImage" className={classes.frontImage} />
-                        </Animation>
-                    </Grid>
+                        {/* <Animation direction="fade-up"> */}
+                            {/* <img src={Hire} alt="frontImage" className={classes.frontImage} /> */}
+                        {/* </Animation> */}
+                        <StaticQuery
+                            query={graphql`
+                                {
+                                hireAssist:file(relativePath:{eq:"main.png"}){
+                                    childImageSharp{
+                                    fluid(maxWidth:1600){
+                                        ...GatsbyImageSharpFluid
+                                    }
+                                    }
+                                }
+                                }
+                            `}
+                             render={(data)=>(
+                                <Grid item xs={12} sm={6} md={6} className={classes.contentImage} >
+                                     {console.log(data)}
+                                     {/* <img src={Hire} alt="frontImage" className={classes.frontImage} /> */}
+                                     <Img fluid={data.hireAssist.childImageSharp.fluid} alt="Hire" className={classes.frontImage}/>
+                                </Grid>
+                             )}
+                        />
                   </Grid>
                </section>
             </React.Fragment>
