@@ -6,10 +6,12 @@ const useStyles = makeStyles(theme => ({
         margin: 'auto',
         padding: '20px',
         // boxShadow:'none',
+        border: '1px solid #a69e9e',
         [theme.breakpoints.down('sm')]: {
             width: '100%',
             margin: '1rem auto',
             boxShadow:'none',
+            border:'none'
         }
     },
     text: {

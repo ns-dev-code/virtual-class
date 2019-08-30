@@ -14,18 +14,27 @@ import { cloudApi } from '../../config/index';
 import axios from 'axios';
 
 const validationSchema = Yup.object({
-    email:Yup.string("Enter Email")
-    .email("Enter a valid email")
+    email:Yup.string()
+    .email("Invalid email")
     .required("Email is required"),
-    password:Yup.string("")
+    password:Yup.string()
     .required('Password is required')
 })
 
+
 function LoginPage(props){
+    var flag =null;
     const [error,setError] = useState(null)
     const [loading ,setLoading] = useState(true)
     const { '*' : id} = props;
-
+     if(typeof window !== 'undefined'){
+         if(window.history.state){
+            //  console.log(window.history.state.message);
+             flag = window.history.state.message;
+         }
+     }
+     const [emailVerified,setEmailVerified] = useState(flag)
+     
     useEffect(()=>{
        (async()=>{
             if(id){
@@ -38,21 +47,37 @@ function LoginPage(props){
                 }
             }
        })()
+       setTimeout(()=>{
+           setEmailVerified(null)
+       },2000)
     },[])
-
+   
+    
     const handleSubmit = async(data,actions) =>{
+      
        try{
         const useCredentials = await firebase.auth.signInWithEmailAndPassword(data.email, data.password)
-                    console.log(useCredentials)
+                    
                     props.login(useCredentials.user)
     
                     navigate('/dashboard')
        }
        catch(error){
-           setError(error.message)
-            actions.resetForm()
+           
+            if(error.code === 'auth/user-not-found'){
+                 actions.setStatus({message:'Invalid email id or password!'})
+            }else{
+                actions.setStatus({message:'The password is invalid!'})
+            }
+             setTimeout(() => {
+                    actions.setSubmitting(false)
+                    actions.resetForm()
+            }, 3000);
+           
        }
+       
     }
+    
     const values = {email:'',password:''}
  
     return(
@@ -61,7 +86,7 @@ function LoginPage(props){
                  <SEO/>
             
                     <Formik
-                        render={props=> <Login {...props} res={error}/>}
+                        render={props=> <Login {...props} res={error} verifiedEmail={emailVerified}/>}
                         validationSchema={validationSchema}
                         initialValues={values}
                         onSubmit={handleSubmit}

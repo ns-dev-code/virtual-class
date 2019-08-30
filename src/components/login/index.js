@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { navigateTo, Link, navigate } from 'gatsby'
-import { Typography, TextField, Paper , Fab} from '@material-ui/core'
+import { Typography, TextField, Paper , Fab , Fade } from '@material-ui/core'
 import firebase from '../../utils/firebase'
 import { connect } from 'react-redux'
 import { login } from '../../lib/redux/actions'
@@ -9,8 +9,9 @@ import password from '../../images/password.png'
 import { withSnackbar } from 'notistack'
 import Footer from '../shared/main/main-footer'
 import talentExcel from '../../images/talent-excel-logo.png'
-import { Formik } from 'formik'
+import { ErrorMessage  } from 'formik'
 import linkedin from '../../images/icons/linkedin.svg'
+import { IoIosInformationCircleOutline } from 'react-icons/io';
 
 import Axios from 'axios';
 import { cloudApi } from '../../config'
@@ -26,13 +27,9 @@ function Login(props) {
     
     const {
         values:{email , password},
-        errors,touched,handleSubmit,handleChange,isValid,setFieldTouched,res
+        errors,touched,handleSubmit,handleChange,isValid,setFieldTouched,res,status,isSubmitting,verifiedEmail
     } = props
-
-    if(res != null){
-        props.enqueueSnackbar(res,{variant:'error'})
-    }
-
+  
     const handleNavigate = redirect => () => {
         switch(redirect){
             case 'home':
@@ -49,7 +46,11 @@ function Login(props) {
     const handlePasswordReset = () => {
         navigate('/forgot-password')
     }
-
+    const change = (name,e) =>{
+       
+        handleChange(e);
+        setFieldTouched(name,true,false);
+    }
     return (
         <React.Fragment>
             <Paper className={classes.root}>
@@ -60,33 +61,43 @@ function Login(props) {
                 <div className={classes.linkedin} >
                     <a href={`${cloudApi}/auth/linkedin`}> <img className={classes.linkedinButton} src={linkedin} /></a>
                 </div>
-                 <Typography align="center" style={{color: '#766666'}}>OR</Typography>
+                 {
+                     status || verifiedEmail ? 
+                                <div className={classes.notify} id="notification">
+                                   { status &&  <Typography variant="h6" style={{fontSize:'0.875rem'}} align="center">{ status.message}</Typography>}
+                                   { verifiedEmail !== null &&  <Typography variant="h6" style={{fontSize:'0.875rem'}} align="center">{ verifiedEmail}</Typography>}
+                                </div>
+                             :
+                              <Typography align="center" style={{color: '#766666'}}>OR</Typography>
+                 }
                  <form onSubmit={handleSubmit}>
                  <TextField
                     name="email"
-                    error={Boolean(errors.email)}
+                    error={touched.email && Boolean(errors.email)}
                     label="Enter Email"
                     placeholder="Please Enter your email"
                     variant="outlined"
-                    onChange={handleChange}
+                    onChange={change.bind(null,"email")}
                     value={email}
                     fullWidth
+                    aria-label="email"
                     type="email"
                     className={classes.textField}
-                    helperText={errors.email}
-                />
+                    helperText={touched.email?errors.email:""}
+                >
+                </TextField>
                 <TextField
                     name="password"
                     label="Enter Password"
                     placeholder="Please Enter your password"
-                    error={Boolean(errors.password)}
+                    error={touched.password && Boolean(errors.password)}
                     variant="outlined"
-                    onChange={handleChange}
+                    onChange={change.bind(null,"password")}
                     fullWidth
                     value={password}
                     type="password"
                     className={classes.textField}
-                    helperText={errors.password}
+                    helperText={touched.password?errors.password:""}
                 />
 
                 {/* <div className={classes.button} onClick={handleSubmit}>
@@ -98,7 +109,7 @@ function Login(props) {
                     size="large"
                     color="secondary"
                     className={classes.button}
-                    disabled={!isValid}
+                    disabled={!isValid || isSubmitting}
                  >
                      Sign in
                  </Fab>

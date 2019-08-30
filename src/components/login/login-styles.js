@@ -3,14 +3,27 @@ import { makeStyles } from '@material-ui/styles'
 const useStyles = makeStyles(theme => ({
     root: {
         width: "30%",
-        margin: 'auto',
+        margin: '2rem auto',
         padding: '20px',
-        boxShadow:'none',
+        border:'1px solid #a69e9e',
         [theme.breakpoints.down('sm')]: {
             width: '100%',
             margin: '1rem auto',
             boxShadow:'none',
+            border:'none'
         }
+    },
+    notify:{
+        margin: '0.5rem auto 0.5rem auto',
+        color: 'white',
+        /* background-color: red; */
+        border: '1px solid #a7a7a7',
+        padding: '0.5rem',
+        borderRadius: '1rem',
+        backgroundColor: '#D32F2F',
+        boxShadow: '1px 1px 15px lightslategrey',
+        fontSize:'0.875rem',
+        // width:'15rem'
     },
     text: {
         fontWeight: '600',

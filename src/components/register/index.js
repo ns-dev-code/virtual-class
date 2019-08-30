@@ -16,6 +16,7 @@ function Register(props) {
         touched,
         isValid,
         setStatus,
+        setFieldTouched
     } = props;
     const classes = useStyles() 
     const [showPassword , setShowPassword ]= useState(false);
@@ -37,6 +38,11 @@ function Register(props) {
         }
     }
 
+    const change = (name,e) =>{
+        handleChange(e);
+        setFieldTouched(name,true,false);
+    }
+
     return (
         <React.Fragment>
             <Paper className={classes.root}>
@@ -47,29 +53,29 @@ function Register(props) {
                 <form onSubmit={handleSubmit} autoComplete="off" >
                         <TextField
                             name="firstName"
-                            error={Boolean(errors.firstName)}
+                            error={touched.firstName && Boolean(errors.firstName)}
                             label="First Name"
                             placeholder="Enter first name"
                             variant="outlined"
-                            onChange={handleChange}
+                            onChange={change.bind(null,'firstName')}
                             value={firstName}
                             fullWidth
                             type="text"
                             className={classes.textField}
-                            helperText={errors.firstName && errors.firstName}
+                            helperText={touched.firstName?errors.firstName:''}
                         />
                         <TextField
                             name="lastName"
-                            error={Boolean(errors.lastName)}
+                            error={touched.lastName && Boolean(errors.lastName)}
                             label="Last Name"
                             placeholder="Enter last name"
                             variant="outlined"
-                            onChange={handleChange}
+                            onChange={change.bind(null,'lastName')}
                             value={lastName}
                             fullWidth
                             type="text"
                             className={classes.textField}
-                            helperText={errors.lastName && errors.lastName}
+                            helperText={touched.lastName ? errors.lastName:''}
                         />
                         <FormControl variant="outlined" className={classes.select}>
                             <InputLabel ref={inputLabel} htmlFor="userType-outlined">Select user type</InputLabel>
@@ -77,40 +83,40 @@ function Register(props) {
                                 native
                                 value={userType}
                                 placeholder="Select user type"
-                                onChange={handleChange}
+                                onChange={change.bind(null,'userType')}
                                 input={<OutlinedInput name="userType" labelWidth={labelWidth} id="userType-outlined"/>}
                             >
                                 <option value="" />
                                 <option value="student">Student</option>
                                 <option value="recruiter">Recruiter</option>
                             </Select>
-                            {/* <FormHelperText>{errors.userType}</FormHelperText> */}
+                            <FormHelperText>{touched.userType?errors.userType:''}</FormHelperText>
                         </FormControl>
                         <TextField
                             name="email"
-                            error={Boolean(errors.email)}
+                            error={touched.email && Boolean(errors.email)}
                             label="Email"
                             placeholder="Enter email"
                             variant="outlined"
-                            onChange={handleChange}
+                            onChange={change.bind(null,'email')}
                             value={email}
                             fullWidth
                             type="email"
                             className={classes.textField}
-                            helperText={errors.email}
+                            helperText={touched.email ? errors.email:''}
                         />
                         <TextField
                             name="password"
                             label="Password"
                             placeholder="Enter password"
-                            error={Boolean(errors.password)}
+                            error={touched.password && Boolean(errors.password)}
                             variant="outlined"
-                            onChange={handleChange}
+                            onChange={change.bind(null,'password')}
                             fullWidth
                             value={password}
                             type={showPassword?'text':'password'}
                             className={classes.textField}
-                            helperText={errors.password}
+                            helperText={touched.password ? errors.password : ''}
                             InputProps={{
                                 endAdornment:(
                                     <InputAdornment position="end">

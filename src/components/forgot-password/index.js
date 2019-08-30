@@ -164,7 +164,8 @@ function ForgotPass(props){
                <Container maxWidth="md">
                     <div className={classes.title}>
                          <Typography variant="h4">We just emailed you a link</Typography>
-                         <Typography variant="h6">Please check your email and reset your password</Typography>
+                         <Typography variant="h6">Please check your email and reset your password.</Typography>
+                         {/* <Typography variant="h6">If you do not receive an email then no matching account was found for the information you provided.Please create a new account.</Typography> */}
                          {resend === true && <Typography variant="caption" style={{color:'green'}}><img src={check} style={{width:'1rem'}} alt="check mark"/> We've sent another email. Please check your email</Typography>}
                     </div>
                     <Fab

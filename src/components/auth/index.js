@@ -5,14 +5,14 @@ import { connect } from 'react-redux'
 import { login } from '../../lib/redux/actions'
 
 function auth(props) {
-
+   
    const [user, setUser] = useState(null)
    useEffect(() => {
       const currentUser = firebase.auth.currentUser;
       const user = JSON.parse(window.localStorage.getItem("user"))
      
       if (!user.emailVerified)
-         navigate('/login')
+         navigate('/login',{state:{message:'Email is not verified!'}})
       else {
          setUser(user)
          props.login(user)
