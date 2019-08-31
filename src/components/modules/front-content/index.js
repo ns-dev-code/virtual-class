@@ -55,7 +55,7 @@ function FrontContent(props){
                             `}
                              render={(data)=>(
                                 <Grid item xs={12} sm={6} md={6} className={classes.contentImage} >
-                                     {console.log(data)}
+                                   
                                      {/* <img src={Hire} alt="frontImage" className={classes.frontImage} /> */}
                                      <Img fluid={data.hireAssist.childImageSharp.fluid} alt="Hire" className={classes.frontImage}/>
                                 </Grid>

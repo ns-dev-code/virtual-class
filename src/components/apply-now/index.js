@@ -10,40 +10,54 @@ import { useTranslation } from 'react-i18next'
 import Progress from '../../lib/loading'
 
  function ApplyNow(props) {
-    const { id } = props 
-    const { t } = useTranslation('translation')
-    const classes = useStyles()
-    const [loading,setLoading] = useState(false)
+    
+    const { id } = props ;
+    const { t } = useTranslation('translation');
+    const classes = useStyles();
+    const [loading,setLoading] = useState(false);
     const [state,setState] = useState({
             file:null,
             type:null
-    })
-    const [message,setMessage] =useState('Upload your CV')
-    const [openings,setOpenings] = useState(null)
+    });
+    const [message,setMessage] =useState('Upload your CV');
+    const [openings,setOpenings] = useState(null);
     const [data,setData] = useState({
             firstName:'',
             lastName:'',
             email:'',
             phoneNo:'',
-    })
+    });
+    const [questions,setQuestions] = useState([])
 
     useEffect(()=>{
             if(id){
                     firebase.db.collection('openings').doc(id).get()
                     .then(docRef=>{
-                       setOpenings(docRef.data())
+                       setOpenings(docRef.data());
+                       docRef.data().questions.map((value)=>{
+                            setQuestions(ques=>ques.concat({question:value,answer:''}))
+                       })
                     })
                     .catch(error=>{
                        props.enqueueSnackbar(error.message,{variant:'error'})
                     })
             }
-    },[])
-
+    },[]);
+    
     const handleChange = (event) =>{
         setData({
                 ...data,
                 [event.target.name]:event.target.value
         })
+    }
+
+    const handleQuestions = (question,index) => (event) =>{
+       var exp = Object.assign([],questions);
+        exp[index] ={
+                 question:question,
+                answer:event.target.value
+        }
+         setQuestions(exp);
     }
     const onFileLoad = async(event) =>{
         let file = event.target.files[0]
@@ -105,7 +119,8 @@ import Progress from '../../lib/loading'
                                         fileUrl:await res.ref.getDownloadURL(),
                                         appliedOn:Date.now(),
                                         appliedId:docRef.id,
-                                        opening_id:id
+                                        opening_id:id,
+                                        response:questions
                                 },{merge:true})
                         })
                         .then(()=>{
@@ -133,6 +148,7 @@ import Progress from '../../lib/loading'
                         firstName:'',lastName:'',email:'',phoneNo:''
                 })
                 setMessage('Upload your CV')
+                setQuestions([])
         }
       if(openings){
         return (
@@ -227,7 +243,30 @@ import Progress from '../../lib/loading'
                                                                                 />
                                                                                
                                                                         </Grid>
-                                                                        
+                                                                       {
+                                                                              questions.length !== 0 ?
+                                                                              <Grid item xs={12}>
+                                                                              <h6 variant="h6" align="center" className={classes.textApply}>Assessment Questions.</h6>
+                                                                              {
+                                                                                      questions.map((question,index)=>(
+                                                                                          <React.Fragment>
+                                                                                                   <Typography variant="h6">{question.question}</Typography>
+                                                                                                   <TextField
+                                                                                                        id={index}
+                                                                                                        label=""
+                                                                                                        placeholder=""
+                                                                                                        name={question.question}
+                                                                                                        variant="outlined"
+                                                                                                        onChange={handleQuestions(question.question,index)}
+                                                                                                        value={question.answer}
+                                                                                                        fullWidth
+                                                                                                  />
+                                                                                          </React.Fragment>
+                                                                                      ))
+                                                                               }
+                                                                           </Grid>
+                                                                              :null
+                                                                       }
                                                                         <Grid item xs={12} >
                                                                                <Typography align="center">
                                                                                         <Fab

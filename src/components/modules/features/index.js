@@ -118,8 +118,8 @@ function Features() {
                                 titleTypographyProps={{align:"center"}}
         
                             />
-                            <CardContent  onClick={handleViewMore(index)}>
-                                <table>
+                            <CardContent >
+                                <table  onClick={handleViewMore(index)}>
                                     <tbody>
                                     <tr style={{margin:'1.0rem'}} >
                                         <td><img src={world} alt="job" className={classes.icons}/></td>
