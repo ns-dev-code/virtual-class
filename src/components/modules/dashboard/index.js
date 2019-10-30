@@ -1,7 +1,7 @@
 import React from 'react';
 import clsx from 'clsx';
 import {  useTheme } from '@material-ui/core/styles';
-import { Hidden ,Tooltip ,ListItemIcon, ListItemText, ListItem ,Drawer ,AppBar,Toolbar ,List , CssBaseline ,Typography ,Divider , IconButton ,Menu} from '@material-ui/core'
+import { Hidden ,Tooltip ,ListItemIcon, ListItemText, ListItem ,Drawer ,AppBar,Toolbar ,List , CssBaseline, Box ,Typography ,Divider , IconButton ,Menu} from '@material-ui/core'
 import { Menu as MenuIcon, ChevronLeft , ChevronRight , Mail , AccountCircle } from '@material-ui/icons'
 import { routes } from '../../auth/route'
 import { navigate, Link } from 'gatsby';
@@ -35,37 +35,35 @@ export default function MiniDrawer(props) {
                     [classes.appBarShift]: open,
                 })}
             >
-                <Toolbar className={classes.toolbar}>
-                    <IconButton
-                        color="inherit"
-                        aria-label="Open drawer"
-                        onClick={handleDrawerOpen}
-                        edge="start"
-                        className={clsx(classes.menuButton, {
-                            [classes.hide]: open,
-                        })}
-                    >
-                        <MenuIcon />
-                    </IconButton>
-                    <Typography variant="h6"  className={classes.typography} style={{cursor:'pointer'}} onClick={handleClick}>
-                        Talent Excel
-                   </Typography>
-                   {/* <div>
-                    <img src={talent} className={classes.imageStyle}/>   
-                   </div> */}
-                      <div className={classes.headerIcons}>
-                            <Tooltip title="Logout">
+                        <Box display="flex">
+                            <Box flexGrow={1}> 
                                 <IconButton
-                                    onClick={handleLogout}
+                                    color="inherit"
+                                    aria-label="Open drawer"
+                                    onClick={handleDrawerOpen}
+                                    edge="start"
+                                    className={clsx(classes.menuButton, {
+                                        [classes.hide]: open,
+                                    })}
                                 >
-                                        <AccountCircle/>
+                                    <MenuIcon />
                                 </IconButton>
-                            </Tooltip>
-                            <div className={classes.appsIcons}>
-                                {/* Further Links or icons to be added here */}
-                            </div>
-                      </div>
-                </Toolbar>
+                            </Box>
+                            <Box flexGrow={50}>
+                                <Typography variant="h6"  className={classes.typography} style={{cursor:'pointer'}} onClick={handleClick}>
+                                    Talent Excel
+                                </Typography>
+                            </Box>
+                            <Box>
+                                <Tooltip title="Logout">
+                                    <IconButton
+                                        onClick={handleLogout}
+                                    >
+                                            <AccountCircle/>
+                                    </IconButton>
+                                </Tooltip>
+                            </Box>
+                        </Box>
             </AppBar>
             <Hidden smUp implementation="css">
             <Drawer
@@ -132,7 +130,7 @@ export default function MiniDrawer(props) {
                     </IconButton>
                 </div>
                 <Divider />
-                <List onMouseEnter={handleDrawerOpen}>
+                <List>
                     {routes && routes.map((route, index) => (
                         <ListItem button key={route.text}>
                         <ListItemIcon>{route.icon}</ListItemIcon>

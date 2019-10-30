@@ -1,11 +1,11 @@
-import React , { useState , useEffect }from 'react'
-import {  navigate } from 'gatsby'
-import { Typography, TextField, Paper , Fab , InputAdornment, IconButton , InputLabel , FormControl, Select , OutlinedInput, FormHelperText} from '@material-ui/core'
-import talentExcel from '../../images/talent-excel-logo.png'
-import { useStyles } from './register-styles'
-import { withSnackbar } from 'notistack'
-import * as _ from 'lodash'
-import { Visibility , VisibilityOff } from '@material-ui/icons'
+import React , { useState , useEffect }from 'react';
+import {  navigate } from 'gatsby';
+import { Typography, TextField, Paper , Fab , InputAdornment, IconButton , InputLabel , FormControl, Select , OutlinedInput, FormHelperText} from '@material-ui/core';
+import talentExcel from '../../images/talent-excel-logo.png';
+import { useStyles } from './register-styles';
+import { withSnackbar } from 'notistack';
+import * as _ from 'lodash';
+import { Visibility , VisibilityOff } from '@material-ui/icons';
 
 function Register(props) {
     const {
@@ -42,7 +42,7 @@ function Register(props) {
         handleChange(e);
         setFieldTouched(name,true,false);
     }
-
+    console.log(userType);
     return (
         <React.Fragment>
             <Paper className={classes.root}>
@@ -86,7 +86,7 @@ function Register(props) {
                                 onChange={change.bind(null,'userType')}
                                 input={<OutlinedInput name="userType" labelWidth={labelWidth} id="userType-outlined"/>}
                             >
-                                <option value="" />
+                               <option value=""/>
                                 <option value="student">Student</option>
                                 <option value="recruiter">Recruiter</option>
                             </Select>
@@ -131,6 +131,17 @@ function Register(props) {
                                 )
                             }}
                         />
+                       {
+                           userType === 'student' &&
+                           <TextField
+                           name="upload cv"
+                           label="Upload Cv"
+                           variant="outlined"
+                           fullWidth
+                           className={classes.textField}
+                           value="Upload CV"
+                       />
+                       }
                     <Fab
                         variant="extended"
                         color="secondary"

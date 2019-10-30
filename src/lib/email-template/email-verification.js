@@ -2,7 +2,7 @@
  function EmailVerification(userDetails){
     var image = null;
     var url = null;
-   if(process.env.NODE_ENV != "production"){
+   if(process.env   .NODE_ENV != "production"){
        url = "http://localhost:8000/login"
        image = "https://firebasestorage.googleapis.com/v0/b/talentexcel-1.appspot.com/o/talentexcel%2Ftalent-excel-logo.png?alt=media&token=5dd78ecb-dc4a-40f3-8c82-1aca6d6ff6e6"
    }else{
@@ -22,13 +22,13 @@
                            <tr><td>
                                <section>
                                        <h2 style="font-family:Roboto,RobotoDraft,Helvetica,Arial,sans-serif;font-weight:200;text-align: -webkit-center;font-size: 2rem;">Thanks for signing up.</h2>
-                                       <h4 style="font-family: Roboto,RobotoDraft,Helvetica,Arial,sans-serif;font-weight:200;text-align: -webkit-center;">Please confirm your email address.</h4>
+                                       <h4 style="font-family: Roboto,RobotoDraft,Helvetica,Arial,sans-serif;font-weight:200;text-align: -webkit-center;">Please verify your email address.</h4>
                                </section>
                            </td></tr>
                            <tr>
                                <td>
                                    <a href="${url}/${userDetails}" style="text-decoration:none;cursor:pointer;" target="_blank">
-                                   <button type="button" style="cursor:pointer;margin:1rem auto; display:-webkit-box;padding:1rem;border-radius:2rem;color:#fff;background-color:#115d56;">Confirm your email</button>
+                                   <button type="button" style="cursor:pointer;margin:1rem auto; display:-webkit-box;padding:1rem;border-radius:2rem;color:#fff;background-color:#115d56;">verify email</button>
                                    </a>
                                </td>
                            </tr>
