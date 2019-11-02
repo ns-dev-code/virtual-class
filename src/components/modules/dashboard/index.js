@@ -1,8 +1,8 @@
 import React from 'react';
 import clsx from 'clsx';
-import {  useTheme } from '@material-ui/core/styles';
-import { Hidden ,Tooltip ,ListItemIcon, ListItemText, ListItem ,Drawer ,AppBar,Toolbar ,List , CssBaseline ,Typography ,Divider , IconButton ,Menu} from '@material-ui/core'
-import { Menu as MenuIcon, ChevronLeft , ChevronRight , Mail , AccountCircle } from '@material-ui/icons'
+import { useTheme } from '@material-ui/core/styles';
+import { Hidden, Tooltip, ListItemIcon, ListItemText, ListItem, Drawer, AppBar, Toolbar, List, CssBaseline, Typography, Divider, IconButton, Menu } from '@material-ui/core'
+import { Menu as MenuIcon, ChevronLeft, ChevronRight, Mail, AccountCircle, NotificationsActiveOutlined } from '@material-ui/icons'
 import { routes } from '../../auth/route'
 import { navigate, Link } from 'gatsby';
 import { useStyles } from './dashboard-styles'
@@ -19,11 +19,11 @@ export default function MiniDrawer(props) {
     function handleDrawerClose() {
         setOpen(false);
     }
-    const handleLogout = () =>{
+    const handleLogout = () => {
         window.localStorage.removeItem('user')
         navigate('/')
     }
-    const handleClick = () =>{
+    const handleClick = () => {
         navigate('/dashboard')
     }
     return (
@@ -47,104 +47,112 @@ export default function MiniDrawer(props) {
                     >
                         <MenuIcon />
                     </IconButton>
-                    <Typography variant="h6"  className={classes.typography} style={{cursor:'pointer'}} onClick={handleClick}>
+                    <Typography variant="h6" className={classes.typography} style={{ cursor: 'pointer' }} onClick={handleClick}>
                         Talent Excel
                    </Typography>
-                   {/* <div>
+                    {/* <div>
                     <img src={talent} className={classes.imageStyle}/>   
                    </div> */}
-                      <div className={classes.headerIcons}>
-                            <Tooltip title="Logout">
-                                <IconButton
-                                    onClick={handleLogout}
-                                >
-                                        <AccountCircle/>
-                                </IconButton>
-                            </Tooltip>
-                            <div className={classes.appsIcons}>
-                                {/* Further Links or icons to be added here */}
-                            </div>
-                      </div>
+                    <div className={classes.headerIcons}>
+
+                        <Tooltip title="Logout">
+                            <IconButton
+                                onClick={handleLogout}
+                            >
+                                <AccountCircle />
+                            </IconButton>
+                        </Tooltip>
+                        <Tooltip title="Notification">
+                            <IconButton
+
+                            >
+                                <NotificationsActiveOutlined />
+                            </IconButton>
+                        </Tooltip>
+                        <div className={classes.appsIcons}>
+                            {/* Further Links or icons to be added here */}
+                        </div>
+                    </div>
                 </Toolbar>
             </AppBar>
             <Hidden smUp implementation="css">
-            <Drawer
-                variant="temporary"
-                className={clsx(classes.drawer, {
-                    [classes.drawerOpen]: open,
-                    [classes.drawerClose]: !open,
-                })}
-                classes={{
-                    paper: clsx({
+                <Drawer
+                    variant="temporary"
+                    className={clsx(classes.drawer, {
                         [classes.drawerOpen]: open,
                         [classes.drawerClose]: !open,
-                    }),
-                }}
-              
-                open={open}
-                ModalProps={{
-                    keepMounted:true //Better open performance on mobile
-                }}
-                
-            >
-                <div className={classes.toolbar}>
-                    <IconButton onClick={handleDrawerClose}>
-                        {theme.direction === 'rtl' ? <ChevronRight /> : <ChevronLeft />}
-                    </IconButton>
-                </div>
-                <Divider />
-                <List >
-                    {routes && routes.map((route, index) => (
-                        <ListItem button key={route.text}>
-                             <ListItemIcon>{route.icon}</ListItemIcon>
-                            <Link to={`/${route.text.toLowerCase().trim()}`} className={classes.link}> 
-                                
-                                <ListItemText primary={route.text}
-                                />
-                            </Link>
-                        </ListItem>
-                    ))}
-                </List>
-            </Drawer>
+                    })}
+                    classes={{
+                        paper: clsx({
+                            [classes.drawerOpen]: open,
+                            [classes.drawerClose]: !open,
+                        }),
+                    }}
+
+                    open={open}
+                    ModalProps={{
+                        keepMounted: true //Better open performance on mobile
+                    }}
+
+                >
+                    <div className={classes.toolbar}>
+                        <IconButton onClick={handleDrawerClose}>
+                            {theme.direction === 'rtl' ? <ChevronRight /> : <ChevronLeft />}
+                        </IconButton>
+                    </div>
+                    <Divider />
+                    <List >
+                        {routes && routes.map((route, index) => (
+                            <ListItem button key={route.text}>
+                                <ListItemIcon>{route.icon}</ListItemIcon>
+                                <Link to={`/${route.text.toLowerCase().trim()}`} className={classes.link}>
+
+                                    <ListItemText primary={route.text}
+                                    />
+                                </Link>
+                            </ListItem>
+                        ))}
+                    </List>
+                </Drawer>
             </Hidden>
             <Hidden smDown implementation="css">
-            <Drawer
-                variant="permanent"
-                className={clsx(classes.drawer, {
-                    [classes.drawerOpen]: open,
-                    [classes.drawerClose]: !open,
-                })}
-                classes={{
-                    paper: clsx({
+                <Drawer
+                    variant="permanent"
+                    className={clsx(classes.drawer, {
                         [classes.drawerOpen]: open,
                         [classes.drawerClose]: !open,
-                    }),
-                }}
-                open={open}
-                ModalProps={{
-                    keepMounted:true //Better open performance on mobile
-                }}
-               
-            >
-                <div className={classes.toolbar}>
-                    <IconButton onClick={handleDrawerClose}>
-                        {theme.direction === 'rtl' ? <ChevronRight /> : <ChevronLeft />}
-                    </IconButton>
-                </div>
-                <Divider />
-                <List onMouseEnter={handleDrawerOpen}>
-                    {routes && routes.map((route, index) => (
-                        <ListItem button key={route.text}>
-                        <ListItemIcon>{route.icon}</ListItemIcon>
-                            <Link to={`/${route.text.toLowerCase().trim()}`} className={classes.link}> 
-                                <ListItemText primary={route.text}
-                                />
-                            </Link>
+                    })}
+                    classes={{
+                        paper: clsx({
+                            [classes.drawerOpen]: open,
+                            [classes.drawerClose]: !open,
+                        }),
+                    }}
+                    open={open}
+                    ModalProps={{
+                        keepMounted: true //Better open performance on mobile
+                    }}
 
-                        </ListItem>
-                    ))}
-                </List>
-            </Drawer>
+                >
+                    <div className={classes.toolbar}>
+                        <IconButton onClick={handleDrawerClose}>
+                            {theme.direction === 'rtl' ? <ChevronRight /> : <ChevronLeft />}
+                        </IconButton>
+                    </div>
+                    <Divider />
+                    <List onMouseEnter={handleDrawerOpen}>
+                        {routes && routes.map((route, index) => (
+                            <ListItem button key={route.text}>
+                                <ListItemIcon>{route.icon}</ListItemIcon>
+                                <Link to={`/${route.text.toLowerCase().trim()}`} className={classes.link}>
+                                    <ListItemText primary={route.text}
+                                    />
+                                </Link>
+
+                            </ListItem>
+                        ))}
+                    </List>
+                </Drawer>
             </Hidden>
             <main className={classes.content}>
                 <div className={classes.toolbar} />

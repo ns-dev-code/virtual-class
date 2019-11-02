@@ -238,7 +238,9 @@ function Overview(props) {
                 </Grid>
 
             </Grid>
-            <ApplicationChart />
+            {
+                process.browser && <ApplicationChart />
+            }
         </Dash>
     )
 }

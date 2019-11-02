@@ -57,7 +57,7 @@ const Chart = () => {
             array.push(i)
             i++;
         }
-        const estimatedDates = array.map((item, index) => moment(moment(Date.now()).add(0, 'days')).subtract(index, 'days').format('ll')).reverse()
+        const estimatedDates = array.map((item, index) => moment(moment(Date.now()).add(-9, 'days')).subtract(index, 'days').format('ll')).reverse()
         setDataLabel(estimatedDates)
 
         const data = [
@@ -99,10 +99,12 @@ const Chart = () => {
             }
         })
 
-        setDataSet({
-            labels: finaldataset.map(fnd => fnd.date),
-            counts: finaldataset.map(fnd => fnd.count)
-        })
+        if (process.browser) {
+            setDataSet({
+                labels: finaldataset.map(fnd => fnd.date),
+                counts: finaldataset.map(fnd => fnd.count)
+            })
+        }
 
 
         console.log()
@@ -111,7 +113,7 @@ const Chart = () => {
 
     console.log(dataSet)
 
-    return (
+    return process.browser && (
         <React.Fragment>
             <Grid container spacing={3} >
                 <Grid item xs sm md={12} lg={6} xl={6}>
