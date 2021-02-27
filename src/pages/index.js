@@ -1,21 +1,16 @@
-import React   from "react"
-import { Main } from '../components/shared'
-import { FrontContent , GettingStarted , Features } from '../components'
+import React from "react"
 import SEO from '../components/site-meta-data'
+import Login from './login/index'
 
 global.$ = require('jquery')
 
-function IndexPage(props){
-   
-   return(
-         <React.Fragment>
-            <SEO/>
-               <Main>
-                  <FrontContent/>
-                  <Features/>
-                  <GettingStarted/>
-               </Main>   
-         </React.Fragment>
+function IndexPage(props) {
+
+   return (
+      <React.Fragment>
+         <SEO />
+         <Login />
+      </React.Fragment>
    )
 }
 

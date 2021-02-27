@@ -1,16 +1,16 @@
 module.exports = {
   siteMetadata: {
-    title: `Talent Excel`,
-    titleTemplate: `%s . Talnet Development and Discovery Platform`,
-    description: `Talnet Development and Discovery Platform`,
-    author: `Talent Excel`,
-    siteUrl: 'https://www.talentexcel.com'
+    title: `Virtual Class`,
+    titleTemplate: `%s . Online Platform`,
+    description: `Online Platform`,
+    author: `Online Platform`,
+    siteUrl: ''
   },
   plugins: [
     {
       resolve: `gatsby-plugin-create-client-paths`,
       options: {
-        prefixes: [`/login/*`,`/apply-now/*`, '/dashboard/*', '/authorise/*', '/reset-password/*']
+        prefixes: [`/login/*`, `/apply-now/*`, '/dashboard/*', '/authorise/*', '/reset-password/*']
       }
     },
     `gatsby-plugin-react-helmet`,
@@ -26,8 +26,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Talent Excel`,
-        short_name: `Talent Excel`,
+        name: `Virtual Class`,
+        short_name: `Virtual Class`,
         start_url: `/?utm_source=launcher`,
         background_color: `#eae9f4`,
         theme_color: `#4ab8b3`,
@@ -41,6 +41,7 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-offline`,
+    `@bumped-inc/gatsby-plugin-optional-chaining`,
     {
       resolve: `gatsby-plugin-react-redux`,
       options: {
@@ -57,12 +58,12 @@ module.exports = {
       },
     },
     {
-      resolve:`gatsby-plugin-polyfill-io`,
-      options:{
-        features:[`Array.prototype.map`,`fetch`,`default`,`es2015`,`es2017`,`es5`,`es6`,`es7`,`Array.from`,`Array.isArray`,
-                  `Array.prototype.copyWithin`,`Array.prototype.entries`,`Array.prototype.findIndex`,`Array.prototype.forEach`,
-                  `Array.prototype.map`,`Array.prototype.reduce`,`Array.prototype.values`,`Blob`,`Date.now`,`JSON`,`Map`,`~viewport`,
-                  `~html5-elements`]
+      resolve: `gatsby-plugin-polyfill-io`,
+      options: {
+        features: [`Array.prototype.map`, `fetch`, `default`, `es2015`, `es2017`, `es5`, `es6`, `es7`, `Array.from`, `Array.isArray`,
+          `Array.prototype.copyWithin`, `Array.prototype.entries`, `Array.prototype.findIndex`, `Array.prototype.forEach`,
+          `Array.prototype.map`, `Array.prototype.reduce`, `Array.prototype.values`, `Blob`, `Date.now`, `JSON`, `Map`, `~viewport`,
+          `~html5-elements`]
       }
     }
   ],

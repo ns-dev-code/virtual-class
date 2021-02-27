@@ -6,6 +6,7 @@ import Auth from '../../components/auth'
 import Dash from '../../components/modules/dashboard/'
 import SEO from '../../components/site-meta-data'
 import Overview from '../../components/modules/dashboard/overview'
+import NewDashboard from '../../components/modules/dashboard/new-dashboard'
 
 const Dashboard = (props) => {
 
@@ -14,35 +15,10 @@ const Dashboard = (props) => {
 
     return (
         <Auth {...props}>
-            <SEO/>
+            <SEO />
             <React.Fragment>
                 {
-                   <Overview />
-                   /* { user && (
-                        <React.Fragment>
-                            <h2>
-                                Hello,
-
-                            </h2>
-                            <Link to={'/profile'}>
-                                <a>
-                                    {user.email}
-                                </a>
-                            </Link>
-                            <Button
-                                onClick={
-                                    () => {
-
-                                        firebase.auth.signOut()
-                                        navigateTo('/login')
-                                    }
-                                }
-                            >
-                                Logout
-                        </Button>
-                        </React.Fragment>
-                      
-                    ) }*/
+                    <NewDashboard />
                 }
             </React.Fragment>
         </Auth>

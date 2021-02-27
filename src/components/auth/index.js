@@ -11,12 +11,12 @@ function Auth(props) {
       const currentUser = firebase.auth.currentUser;
       const user = JSON.parse(window.localStorage.getItem("user"))
 
-      if (!user.emailVerified)
-         navigate('/login', { state: { message: 'Email is not verified!' } })
-      else {
-         setUser(user)
-         props.login(user)
-      }
+      // if (!user.emailVerified)
+      //    navigate('/login', { state: { message: 'Email is not verified!' } })
+      // else {
+      setUser(user)
+      props.login(user)
+      // }
    }, [])
    return (
       <React.Fragment>
