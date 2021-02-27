@@ -4,7 +4,7 @@ module.exports = {
     titleTemplate: `%s . Online Platform`,
     description: `Online Platform`,
     author: `Online Platform`,
-    siteUrl: ''
+    siteUrl: 'http://www.nitin.surge.sh'
   },
   plugins: [
     {
