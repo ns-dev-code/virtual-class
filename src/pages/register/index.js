@@ -55,6 +55,7 @@ function RegisterPage() {
                     });
             }).catch(err => {
                 setLoad(false);
+                actions.setStatus({ message: err.message })
                 console.log(err)
             });
         } catch (err) {
@@ -66,7 +67,6 @@ function RegisterPage() {
     return (
         <React.Fragment>
             <SnackbarProvider maxSnack={2} anchorOrigin={{ horizontal: 'right', vertical: 'top' }}>
-                <CubeLoader load={load} />
                 <SEO />
                 <Formik
                     render={props => <Register {...props} response={response} />}
