@@ -177,7 +177,7 @@ export default function PrimarySearchAppBar() {
                         <MenuIcon />
                     </IconButton>
                     <Typography className={classes.title} variant="h6" noWrap>
-                        Virtual Classroom
+                        Virtual Session
           </Typography>
                     <div className={classes.search}>
                         <div className={classes.searchIcon}>
