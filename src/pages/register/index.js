@@ -6,7 +6,6 @@ import Footer from '../../components/shared/main/main-footer';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
-import uuid from 'uuid/v4';
 import { cloudApi } from '../../config';
 import * as _ from 'lodash';
 import firebase from '../../lib/firebase';
@@ -44,7 +43,7 @@ function RegisterPage() {
                     lastName: data.lastName,
                     email: data.email,
                     userType: data.userType,
-                    userId: uuid(),
+                    userId: Date.now(),
                     status: false,
                     createdOn: Date.now()
                 })
