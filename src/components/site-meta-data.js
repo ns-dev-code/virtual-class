@@ -29,6 +29,13 @@ const SiteMetaData = () => {
       <meta property="og:locale" content="en" />
       <meta property="og:site_name" content={title} />
       <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"></link>
+      <link href="jquery.loading.css" rel="stylesheet"></link>
+      <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+      <script src="jquery.loading.js"></script>
+      <script
+        src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous"></script>
     </Helmet>
   )
 }

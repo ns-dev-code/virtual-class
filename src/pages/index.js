@@ -3,9 +3,10 @@ import { Main } from '../components/shared'
 import { FrontContent , GettingStarted , Features } from '../components'
 import SEO from '../components/site-meta-data'
 
-const Loading = () => <div>Loading ...</div>
+global.$ = require('jquery')
 
 function IndexPage(props){
+   
    return(
          <React.Fragment>
             <SEO/>

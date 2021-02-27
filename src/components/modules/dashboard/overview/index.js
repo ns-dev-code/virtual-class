@@ -11,9 +11,9 @@ import Applications from '../applications'
 import { navigate } from 'gatsby'
 import { connect } from 'react-redux'
 import { UserProvider } from '../../../../lib/contextApi'
-import { Bar } from 'react-chartjs-2';
+// import { Bar } from 'react-chartjs-2';
 import moment from 'moment';
-import ApplicationChart from '../../chart'
+// import ApplicationChart from '../../chart'
 
 function Overview(props) {
     const classes = useStyles()
@@ -24,42 +24,42 @@ function Overview(props) {
     const [applications, setApplications] = useState([])
     const [data, setData] = useState();
     const [dataLabel, setDataLabel] = useState([])
-    const dataa = {
-        labels: dataLabel,
-        datasets: [{
-            label: 'Weekly Applications',
-            data: [12, 19, 3, 5, 2, 3, 20, 3, 5, 6, 2, 1],
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.8)',
-                'rgba(54, 162, 235, 0.8)',
-                'rgba(255, 206, 86, 0.8)',
-                'rgba(75, 192, 192, 0.8)',
-                'rgba(153, 102, 255, 0.8)',
-                'rgba(255, 159, 64, 0.8)',
-                'rgba(255, 99, 132, 0.8)',
-                'rgba(54, 162, 235, 0.8)',
-                'rgba(255, 206, 86, 0.8)',
-                'rgba(75, 192, 192, 0.8)',
-                'rgba(153, 102, 255, 0.8)',
-                'rgba(255, 159, 64, 0.8)'
-            ],
-            borderColor: [
-                'rgba(255,99,132,1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)',
-                'rgba(255,99,132,1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
-            borderWidth: 1
-        }]
-    }
+    // const dataa = {
+    //     labels: dataLabel,
+    //     datasets: [{
+    //         label: 'Weekly Applications',
+    //         data: [12, 19, 3, 5, 2, 3, 20, 3, 5, 6, 2, 1],
+    //         backgroundColor: [
+    //             'rgba(255, 99, 132, 0.8)',
+    //             'rgba(54, 162, 235, 0.8)',
+    //             'rgba(255, 206, 86, 0.8)',
+    //             'rgba(75, 192, 192, 0.8)',
+    //             'rgba(153, 102, 255, 0.8)',
+    //             'rgba(255, 159, 64, 0.8)',
+    //             'rgba(255, 99, 132, 0.8)',
+    //             'rgba(54, 162, 235, 0.8)',
+    //             'rgba(255, 206, 86, 0.8)',
+    //             'rgba(75, 192, 192, 0.8)',
+    //             'rgba(153, 102, 255, 0.8)',
+    //             'rgba(255, 159, 64, 0.8)'
+    //         ],
+    //         borderColor: [
+    //             'rgba(255,99,132,1)',
+    //             'rgba(54, 162, 235, 1)',
+    //             'rgba(255, 206, 86, 1)',
+    //             'rgba(75, 192, 192, 1)',
+    //             'rgba(153, 102, 255, 1)',
+    //             'rgba(255, 159, 64, 1)',
+    //             'rgba(255,99,132,1)',
+    //             'rgba(54, 162, 235, 1)',
+    //             'rgba(255, 206, 86, 1)',
+    //             'rgba(75, 192, 192, 1)',
+    //             'rgba(153, 102, 255, 1)',
+    //             'rgba(255, 159, 64, 1)'
+    //         ],
+    //         borderWidth: 1
+    //     }]
+    // }
 
 
     const data1 = {
@@ -229,18 +229,19 @@ function Overview(props) {
                     }
                 </Grid>
                 <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
-                    <Bar
+                    {/* <Bar
                         data={dataa}
                         width={100}
                         height={50}
                         options={{ maintainAspectRatio: false }}
-                    ></Bar>
+                    ></Bar> */}
                 </Grid>
 
             </Grid>
-            {
+            {/* {
                 process.browser && <ApplicationChart />
-            }
+            } */}
+            {/* <ApplicationChart /> */}
         </Dash>
     )
 }

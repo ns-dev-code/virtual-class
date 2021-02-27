@@ -28,7 +28,7 @@ function Footer(props){
     return(
         <React.Fragment>
             <Container maxWidth="lg" component="footer" className={classes.footer}>
-                <Typography>© Talent Excel | All Rights Reserved | Terms of Use and Privacy</Typography>
+                <Typography className={classes.typography}>© Talent Excel | All Rights Reserved | Terms of Use and Privacy</Typography>
                 {/* <Grid container spacing={4} justify="space-evenly">
                     {
                         footers.map(footer=>(

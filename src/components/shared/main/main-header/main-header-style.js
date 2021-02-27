@@ -23,26 +23,14 @@ const useStyles = makeStyles(theme=>({
     },
     appBar:{
         backgroundColor:'#FFFFFF !important',
-        boxShadow:'none !important'
+        // boxShadow:'none !important'
     },
     imageStyle:{
-        width:'60%',
+        width:'20%',
         cursor:'pointer'
     },
     contentContainer:{
-        position:'relative',
-        width: '70%',
-        display: 'flex',
-        flexDirection: 'row-reverse',
-        [theme.breakpoints.up('xs')]:{
-            width:'60%'
-        },
-        [theme.breakpoints.up('md')]:{
-            width:'70%'
-        },
-        [theme.breakpoints.down('xs')]:{
-            display:'none'
-        },
+     
       
     },
     text:{
@@ -56,6 +44,14 @@ const useStyles = makeStyles(theme=>({
     },
     body : {
         padding: '0'
+    },
+    joinNow:{
+        color: 'black',
+        backgroundColor: 'white',
+        border: '2px solid #11958e',
+        '&:hover':{
+            color:'white'
+        }
     }
 }))
 

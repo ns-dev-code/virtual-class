@@ -24,7 +24,7 @@ const useStyles = makeStyles(theme=>({
         margin:theme.spacing(2)
     },
     uploadImage:{
-        backgroundImage: `url(${upload})`,
+        // backgroundImage: `url(${upload})`,
         backgroundSize:'cover',
     },
     jobDescription:{

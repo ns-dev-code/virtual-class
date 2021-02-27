@@ -6,7 +6,7 @@ import { login } from '../lib/redux/actions'
 import Progress from '../lib/loading'
 import Axios from 'axios';
 import { cloudApi } from '../utils/config';
-function auth(props) {
+function Auth(props) {
 
    const { '*': id } = props
 
@@ -74,4 +74,4 @@ function auth(props) {
 
 }
 
-export default connect(state => ({ user: state.user }), { login })(auth)
+export default connect(state => ({ user: state.user }), { login })(Auth)

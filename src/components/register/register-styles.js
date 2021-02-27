@@ -3,11 +3,15 @@ import { makeStyles } from '@material-ui/styles'
 const useStyles = makeStyles(theme => ({
     root: {
         width: "30%",
-        margin: '5rem auto',
+        margin: 'auto',
         padding: '20px',
+        // boxShadow:'none',
+        border: '1px solid #a69e9e',
         [theme.breakpoints.down('sm')]: {
             width: '100%',
-            margin: '1rem auto'
+            margin: '1rem auto',
+            boxShadow:'none',
+            border:'none'
         }
     },
     text: {
@@ -45,6 +49,20 @@ const useStyles = makeStyles(theme => ({
     },
     linkedinButton: {
         width: '75%'
+    },
+    fabButton:{
+        margin:'auto',
+        display:'table'
+    },
+    alreadyMember:{
+        margin:'20px 0 0 0'
+    },
+    signIn:{
+        color:'#665ed0',
+        cursor:'pointer'
+    },
+    select:{
+        minWidth:'100%'
     }
 }))
 

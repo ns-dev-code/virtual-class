@@ -58,7 +58,7 @@ const secrets = () => {
     };
     // http://localhost:5002
     // https://us-central1-talentexcel-1.cloudfunctions.net/api
-    const cloudApi = "http://localhost:8080";
+    const cloudApi = "https://us-central1-talentexcel-1.cloudfunctions.net/api";
 
     return {
       cloudApi,

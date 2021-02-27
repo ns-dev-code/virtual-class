@@ -1,133 +1,162 @@
-import React, { useState } from 'react'
-import { navigateTo, Link, navigate } from 'gatsby'
-import { Typography, TextField, Paper } from '@material-ui/core'
-import firebase from '../../utils/firebase'
+import React , { useState , useEffect }from 'react';
+import {  navigate } from 'gatsby';
+import { Typography, TextField, Paper , Fab , InputAdornment, IconButton , InputLabel , FormControl, Select , OutlinedInput, FormHelperText} from '@material-ui/core';
+import talentExcel from '../../images/talent-excel-logo.png';
+import { useStyles } from './register-styles';
+import { withSnackbar } from 'notistack';
+import * as _ from 'lodash';
+import { Visibility , VisibilityOff } from '@material-ui/icons';
 
-import { useStyles } from './register-styles'
-import password from '../../images/password.png'
-import linkedin from '../../images/linkedin.png'
-import { withSnackbar } from 'notistack'
-import Axios from 'axios';
-import { cloudApi } from '../../config'
-import * as _ from 'lodash'
 function Register(props) {
+    const {
+        values:{firstName,lastName,email,userType,password},
+        handleChange,
+        handleSubmit,
+        errors,
+        touched,
+        isValid,
+        setStatus,
+        setFieldTouched
+    } = props;
+    const classes = useStyles() 
+    const [showPassword , setShowPassword ]= useState(false);
+    const inputLabel = React.useRef(null);
+    const [labelWidth,setLabelWidth] = useState(0);
+    useEffect(()=>{
+        setLabelWidth(inputLabel.current.offsetWidth);
+    },[]);
 
-    const classes = useStyles()
-    const [error, setError] = useState(false)
-    const [state, setState] = useState({
-        email: '',
-        password: '',
-        firstname: '',
-        lastname: ''
-    })
-    const handleChange = (event) => {
-        setState({
-            ...state,
-            [event.target.name]: event.target.value
-        })
-    }
-
-    const handleLinkedIn = () => {
-        // Axios.get(`http://localhost:8080/auth/linkedIn`, {
-
-        // }).then(response => {
-        //     console.log(response.data)
-        // })
-
-        let params = `scrollbars=no,resizable=no,status=no,location=no,toolbar=no,menubar=no,
-                        width=400,height=700,left=300,top=100`;
-
-        const opener = window.open('http://localhost:8080/auth/linkedin', 'test', params);
-        console.log(opener.parent)
-
-    }
-
-    const handleSubmit = async () => {
-        const { email, password, firstname, lastname } = state
-        if (!email || !password || !firebase || !lastname) {
-            setError(true)
-            props.enqueueSnackbar('All Fields are required', { variant: 'warning' })
-        }
-        else {
-            setError(false)
-            try {
-                const useCredentials = await Axios.post(`${cloudApi}/registerUser`, {
-                    email: email,
-                    password: password,
-                    displaName: `${_.capitalize(firstname + " " + lastname)}`
-                })
-
-                //props.login(useCredentials.user)
-                props.enqueueSnackbar('Registered Successfully', { variant: 'success' })
-                // navigateTo('/dashboard')
-            }
-            catch (error) {
-                props.enqueueSnackbar(error.message, { variant: 'error' })
-                setError(false)
-            }
+    const handleShowPassword = () =>{
+        setShowPassword(!showPassword);
+    };
+   
+    const handleClick = redirect => () =>{
+        switch(redirect){
+            case 'home':navigate('/');break;
+            case 'login':navigate('/login');break;
+            default:navigate('/register');break;
         }
     }
 
+    const change = (name,e) =>{
+        handleChange(e);
+        setFieldTouched(name,true,false);
+    }
+    console.log(userType);
     return (
         <React.Fragment>
             <Paper className={classes.root}>
-                <div style={{ margin: 'auto' }}>
-                    <img src={password} alt="loginImage" className={classes.image} />
+                <div style={{ margin: 'auto',cursor:'pointer' }} onClick={handleClick('home')}>
+                    <img src={talentExcel} alt="loginImage" className={classes.image} />
                 </div>
                 <Typography align="center" variant="h6" className={classes.text}>Register Here</Typography>
-                <TextField
-                    name="firstname"
-                    error={error}
-                    label="Enter Firstname"
-                    placeholder="Please Enter your firstname"
-                    variant="outlined"
-                    onChange={handleChange}
-                    value={state.firstname}
-                    fullWidth
-                    type="text"
-                    className={classes.textField}
-                />
-                <TextField
-                    name="lastname"
-                    error={error}
-                    label="Enter Lastname"
-                    placeholder="Please Enter your lastname"
-                    variant="outlined"
-                    onChange={handleChange}
-                    value={state.lastname}
-                    fullWidth
-                    type="text"
-                    className={classes.textField}
-                />
-                <TextField
-                    name="email"
-                    error={error}
-                    label="Enter Email"
-                    placeholder="Please Enter your email"
-                    variant="outlined"
-                    onChange={handleChange}
-                    value={state.email}
-                    fullWidth
-                    type="email"
-                    className={classes.textField}
-                />
-                <TextField
-                    name="password"
-                    label="Enter Password"
-                    placeholder="Please Enter your password"
-                    error={error}
-                    variant="outlined"
-                    onChange={handleChange}
-                    fullWidth
-                    value={state.password}
-                    type="password"
-                    className={classes.textField}
-                />
+                <form onSubmit={handleSubmit} autoComplete="off" >
+                        <TextField
+                            name="firstName"
+                            error={touched.firstName && Boolean(errors.firstName)}
+                            label="First Name"
+                            placeholder="Enter first name"
+                            variant="outlined"
+                            onChange={change.bind(null,'firstName')}
+                            value={firstName}
+                            fullWidth
+                            type="text"
+                            className={classes.textField}
+                            helperText={touched.firstName?errors.firstName:''}
+                        />
+                        <TextField
+                            name="lastName"
+                            error={touched.lastName && Boolean(errors.lastName)}
+                            label="Last Name"
+                            placeholder="Enter last name"
+                            variant="outlined"
+                            onChange={change.bind(null,'lastName')}
+                            value={lastName}
+                            fullWidth
+                            type="text"
+                            className={classes.textField}
+                            helperText={touched.lastName ? errors.lastName:''}
+                        />
+                        <FormControl variant="outlined" className={classes.select}>
+                            <InputLabel ref={inputLabel} htmlFor="userType-outlined">Select user type</InputLabel>
+                            <Select
+                                native
+                                value={userType}
+                                placeholder="Select user type"
+                                onChange={change.bind(null,'userType')}
+                                input={<OutlinedInput name="userType" labelWidth={labelWidth} id="userType-outlined"/>}
+                            >
+                               <option value=""/>
+                                <option value="student">Student</option>
+                                <option value="recruiter">Recruiter</option>
+                            </Select>
+                            <FormHelperText>{touched.userType?errors.userType:''}</FormHelperText>
+                        </FormControl>
+                        <TextField
+                            name="email"
+                            error={touched.email && Boolean(errors.email)}
+                            label="Email"
+                            placeholder="Enter email"
+                            variant="outlined"
+                            onChange={change.bind(null,'email')}
+                            value={email}
+                            fullWidth
+                            type="email"
+                            className={classes.textField}
+                            helperText={touched.email ? errors.email:''}
+                        />
+                        <TextField
+                            name="password"
+                            label="Password"
+                            placeholder="Enter password"
+                            error={touched.password && Boolean(errors.password)}
+                            variant="outlined"
+                            onChange={change.bind(null,'password')}
+                            fullWidth
+                            value={password}
+                            type={showPassword?'text':'password'}
+                            className={classes.textField}
+                            helperText={touched.password ? errors.password : ''}
+                            InputProps={{
+                                endAdornment:(
+                                    <InputAdornment position="end">
+                                        <IconButton
+                                            edge="end"
+                                            aria-label="toggle password"
+                                            onClick={handleShowPassword}
+                                        >
+                                            { showPassword ? <VisibilityOff/>:<Visibility/>}
+                                        </IconButton>
+                                    </InputAdornment>
+                                )
+                            }}
+                        />
+                       {
+                           userType === 'student' &&
+                           <TextField
+                           name="upload cv"
+                           label="Upload Cv"
+                           variant="outlined"
+                           fullWidth
+                           className={classes.textField}
+                           value="Upload CV"
+                       />
+                       }
+                    <Fab
+                        variant="extended"
+                        color="secondary"
+                        size="medium"
+                        className={classes.fabButton}
+                        disabled={!isValid}
+                        type="submit"
+                    >
+                        Sign up
+                    </Fab>
 
-                <div className={classes.button} onClick={handleSubmit}>
-                    <Typography align="center" >Sign Up</Typography>
+                </form>
+                <div className={classes.alreadyMember}>
+                    <Typography align="center">Already on Talent Excel ? <span className={classes.signIn} onClick={handleClick('login')}>Sign in</span></Typography>
                 </div>
-
             </Paper>
         </React.Fragment>
     )

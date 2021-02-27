@@ -27,7 +27,7 @@ const useStyles = makeStyles(theme=>({
         }
     },
     div:{
-        margin:'auto',
+        margin:'1rem auto',
         display:'table',
       
     },
@@ -35,7 +35,7 @@ const useStyles = makeStyles(theme=>({
      margin:'1.0rem'
    },
    contentHead:{
-     height:'3rem'
+     height:'13rem'
    },
    container:{
        [theme.breakpoints.up('xl')]:{
@@ -52,18 +52,19 @@ const useStyles = makeStyles(theme=>({
     //  position:'relative',
     width:'248px !important',
     border:'1px solid #c5eae8',
+    height:'16rem',
     [theme.breakpoints.down('md')]:{
       width:'200px !important',
       marginLeft:'20px !important',
       marginRight:'20px !important'
     },
     [theme.breakpoints.down('sm')]:{
-      width:'190px !important',
+      width:'100% !important',
       marginLeft:'20px !important',
       marginRight:'20px !important'
     },
     [theme.breakpoints.down('xs')]:{
-      width:'200px !important',
+      width:'100% !important',
       marginLeft:'20px !important',
       marginRight:'20px !important'
     }
@@ -80,9 +81,11 @@ const useStyles = makeStyles(theme=>({
     width:'40px',
     height:'4px'
    },
-   contentHead:{
-    
-    
+   cardContent:{
+    height:'13rem'
+   },
+   cardContentColumn:{
+     display:'flex'
    }
 }))
 
@@ -110,7 +113,8 @@ const settings = {
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
-          initialSlide: 1
+          initialSlide: 1,
+          arrows:false
         }
       },
       {
@@ -118,7 +122,8 @@ const settings = {
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
-          initialSlide:1
+          initialSlide:1,
+          arrows:false
         }
       }
     ]

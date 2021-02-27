@@ -4,7 +4,8 @@ const drawerWidth = 240;
 
 const useStyles = makeStyles(theme=>({
     typography:{
-        color:'black'
+        color:'black',
+        lineHeight:'3rem'
     },
     imageStyle:{
         width:'60%',
@@ -33,7 +34,7 @@ const useStyles = makeStyles(theme=>({
         }),
     },
     menuButton: {
-        marginRight: 36,
+        margin: 'auto',
         [theme.breakpoints.down('sm')]:{
             marginRight:'0'
         }

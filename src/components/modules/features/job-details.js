@@ -31,14 +31,18 @@ export default function JobDetails(props) {
                                     <td><IoMdBriefcase color="black" size="20"/></td>
                                     <td><Typography variant="body1">{details.salary}</Typography></td>
                                 </tr>
-                                <tr>
-                                    <td><IoIosList color="black" size="20"/></td>
-                                    <td><div>
+                                {/* <tr> */}
+                                    {/* <td><IoIosList color="black" size="20"/></td> */}
+                                    {/* <td><div>
                                     <Markdown markup={details.description}/>    
                                     </div></td>
-                                </tr>
+                                    <td></td>
+                                </tr> */}
                             </tbody>
                         </table>
+                        <div>
+                          <Markdown markup={details.description}/>    
+                        </div>
                      </div>
                 </DialogContent>
                 <DialogActions>
