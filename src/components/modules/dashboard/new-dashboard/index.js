@@ -38,7 +38,7 @@ export const NewDashboard = (props) => {
                                             textTransform: 'none'
                                         }} variant="outlined" size="medium" color="primary">
                                             {
-                                                user?.userType === 'student' ? 'Join Session' : ' Share Session'
+                                                user?.userType === 'student' ? 'Share Session' : ' Create Session'
                                             }
                                         </Button>
                                     </Box>
