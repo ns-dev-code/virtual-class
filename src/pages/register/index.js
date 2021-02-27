@@ -11,6 +11,7 @@ import * as _ from 'lodash';
 import firebase from '../../lib/firebase';
 import { CubeLoader } from '../../lib/loading/cube-loader';
 import { EmailVerification } from '../../lib/email-template/email-verification'
+import { navigate } from 'gatsby';
 
 const registerationSchema = Yup.object({
     firstName: Yup.string("Enter first name")
@@ -50,6 +51,7 @@ function RegisterPage() {
                     .then(async (docRef) => {
                         actions.resetForm();
                         setLoad(false);
+                        navigate('/login');
                         setRespone(true);
                     });
             }).catch(err => {

@@ -16,6 +16,7 @@ function Register(props) {
         touched,
         isValid,
         setStatus,
+        isSubmitting,
         setFieldTouched
     } = props;
     const classes = useStyles()
@@ -141,7 +142,7 @@ function Register(props) {
                             color="secondary"
                             size="medium"
                             className={classes.fabButton}
-                            disabled={!isValid}
+                            disabled={!isValid || isSubmitting}
                             type="submit"
                             color="primary"
                         >
