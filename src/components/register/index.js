@@ -92,8 +92,8 @@ function Register(props) {
                                 onChange={change.bind(null, 'userType')}
                                 input={<OutlinedInput name="userType" labelWidth={labelWidth} id="userType-outlined" />}
                             >
-                                <option value="student">Student</option>
-                                <option value="recruiter">Recruiter</option>
+                                <option value="student">Instructor</option>
+                                <option value="recruiter">Admin</option>
                             </Select>
                             <FormHelperText>{touched.userType ? errors.userType : ''}</FormHelperText>
                         </FormControl>
