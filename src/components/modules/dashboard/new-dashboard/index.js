@@ -29,16 +29,15 @@ export const NewDashboard = (props) => {
                                     <Box bgcolor="gray" p={1} textAlign="center" mb={1}>
                                         <Typography style={{ color: '#fff', fontWeight: 'medium', textTransform: 'uppercase' }} variant="subtitle1">{value.title}</Typography>
                                     </Box>
-                                    <Paper elevation={0} style={{ width: '100%', height: 250 }}>
-                                        <MediaCard />
-                                    </Paper>
-                                    <Box display="flex" justifyContent="center">
+                                    <MediaCard />
+                                    <Box mt={2} display="flex" justifyContent="center">
                                         <Button style={{
                                             borderRadius: 24,
                                             textTransform: 'none'
                                         }} variant="outlined" size="medium" color="primary">
+
                                             {
-                                                user?.userType === 'student' ? 'Share Session' : ' Create Session'
+                                                user?.userType === 'student' ? 'Share Session' : ' + Create Session'
                                             }
                                         </Button>
                                     </Box>
